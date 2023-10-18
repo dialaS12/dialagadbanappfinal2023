@@ -1,4 +1,4 @@
-package dga.example.dialagadbanappfinal2023.clotesTable;
+package dga.example.dialagadbanappfinal2023.data.clothesTable;
 
 
 import androidx.room.Entity;
