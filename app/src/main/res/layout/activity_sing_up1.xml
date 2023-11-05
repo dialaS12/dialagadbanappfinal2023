@@ -36,7 +36,7 @@
                         android:layout_marginLeft="2dp"
                         android:layout_marginTop="2dp"
                         android:layout_marginRight="2dp"
-                        android:backgroundTint="#AA8BE1"
+                        android:backgroundTint="#E1C4E8"
                         android:hint="Name"
                         android:textColor="#F8F6F6" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -54,7 +54,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="2dp"
                     android:layout_marginRight="2dp"
-                    android:backgroundTint="#B388FF"
+                    android:backgroundTint="#E1C4E8"
                     android:hint="Email" />
 
 
@@ -66,13 +66,13 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPassword"
-                    android:layout_width="match_parent"
+                    android:layout_width="352dp"
                     android:layout_height="match_parent"
                     android:layout_margin="20dp"
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="2dp"
                     android:layout_marginRight="2dp"
-                    android:backgroundTint="#B388FF"
+                    android:backgroundTint="#E1C4E8"
                     android:hint="Password" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,7 +88,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="2dp"
                     android:layout_marginRight="2dp"
-                    android:backgroundTint="#B388FF"
+                    android:backgroundTint="#E1C4E8"
                     android:hint="RePassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -104,18 +104,19 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="2dp"
                     android:layout_marginRight="2dp"
-                    android:backgroundTint="#B388FF"
+                    android:backgroundTint="#E1C4E8"
                     android:hint="Phone" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/btnSave"
                 android:layout_width="match_parent"
-                android:layout_height="58dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
+                android:backgroundTint="#B388FF"
                 android:text="Save" />
 
             <Button
@@ -126,7 +127,7 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="2dp"
-                android:background="#6F58B6"
+                android:backgroundTint="#B388FF"
                 android:backgroundTintMode="add"
                 android:text="Cancel" />
 

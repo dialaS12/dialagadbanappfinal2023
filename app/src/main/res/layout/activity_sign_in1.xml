@@ -24,8 +24,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="30dp"
-                    android:backgroundTint="#8E24AA"
-                    android:hint="Inter Your Email" />
+                    android:backgroundTint="#E1C4E8"
+                    android:hint="Inter Your Email/UserName" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -37,7 +37,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="35dp"
-                    android:backgroundTint="#8E24AA"
+                    android:backgroundTint="#EBCEF3"
                     android:hint="Inter Your Password" />
 
                 <Button
