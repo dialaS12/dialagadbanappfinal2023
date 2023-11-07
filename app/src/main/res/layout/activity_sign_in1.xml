@@ -52,6 +52,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#B388FF"
+                    android:onClick="onClickmain2"
                     android:text="Singin" />
 
             </com.google.android.material.textfield.TextInputLayout>

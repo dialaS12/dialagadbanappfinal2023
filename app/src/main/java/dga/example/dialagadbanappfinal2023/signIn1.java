@@ -33,7 +33,16 @@ public class signIn1 extends AppCompatActivity {
         //to close current activity
         finish();
     }
+    public void onClickmain2(View v)
+    {
+        //to open new activity from current to next
+        Intent i= new Intent(signIn1.this,MainActivity.class);
+        startActivity(i);
+        //to close current activity
+        finish();
+    }
 }
+
 
 
 
