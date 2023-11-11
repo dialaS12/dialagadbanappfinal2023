@@ -48,13 +48,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/btnTheUpperPart1"
-                    android:layout_width="348dp"
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="60dp"
-                    android:backgroundTint="#B388FF"
-                    android:text="TheUpperPart" />
+                    android:layout_weight="1"
+                    app:srcCompat="@android:drawable/alert_light_frame" />
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/fabAdd1"
@@ -75,7 +74,7 @@
 
                 <ImageView
                     android:src="@drawable/ic_launcher_foreground"
-                    android:id="@+id/btnTheLowerPart1"
+                    android:id="@+id/imageView2"
                     android:layout_width="349dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="55dp"
@@ -100,7 +99,7 @@
 
                 <ImageView
                     android:src="@drawable/ic_launcher_foreground"
-                    android:id="@+id/btnTheShoes1"
+                    android:id="@+id/imageView3"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="55dp"
