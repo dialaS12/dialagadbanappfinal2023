@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity
             ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             //spnr4 data sourceمصدر معطيات (ممكن ان يكون قائمة من قاعدة بيانات مثلا)
-            String[] ar = {"Math", "CS", "Phs", "Arb", "Eng"};
+            String[] ar = {"Random", "Specific color", "Sporty", "Formal or Business Attire", "Casual Style, other..."};
             //spnr5تحديد المعطيات للوسيط
             adapter.addAll(ar);
             //spnr6ربط الكائن المرئي بالوسيط
