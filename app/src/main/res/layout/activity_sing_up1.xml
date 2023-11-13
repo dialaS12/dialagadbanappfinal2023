@@ -130,6 +130,7 @@
                 android:layout_marginRight="2dp"
                 android:backgroundTint="#B388FF"
                 android:backgroundTintMode="add"
+                android:onClick="onClickCancle"
                 android:text="Cancel" />
 
         </LinearLayout>

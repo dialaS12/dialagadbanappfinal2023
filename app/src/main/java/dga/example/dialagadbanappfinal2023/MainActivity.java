@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity
         Intent i= new Intent(MainActivity.this,AddPic.class);
         startActivity(i);
         //to close current activity
-        finish();
     }
+
 
     }
