@@ -25,7 +25,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="30dp"
                     android:backgroundTint="#E1C4E8"
-                    android:hint="Inter Your Email/UserName" />
+                    android:hint="Inter Your Email/UserName"
+                    android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -38,13 +39,15 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="35dp"
                     android:backgroundTint="#EBCEF3"
-                    android:hint="Inter Your Password" />
+                    android:hint="Inter Your Password"
+                    android:inputType="textPassword" />
 
                 <Button
                     android:id="@+id/btnSingup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#B388FF"
+                    android:onClick="onClickSingUp"
                     android:text="Singup" />
 
                 <Button

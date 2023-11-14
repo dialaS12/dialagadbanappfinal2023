@@ -31,7 +31,7 @@ public class singUp1 extends AppCompatActivity {
         etPhone = (TextInputEditText) findViewById(R.id.etPhone);
         btnSave = (Button) findViewById(R.id.btnSave);
     }
-
+/*
     public void onClickmain(View v) {
         //to open new activity from current to next
         Intent i = new Intent(singUp1.this, MainActivity.class);
@@ -39,7 +39,7 @@ public class singUp1 extends AppCompatActivity {
         //to close current activity
         finish();
     }
-
+*/
     public void onClickCancle(View v)
     {
         finish();
@@ -61,24 +61,26 @@ public class singUp1 extends AppCompatActivity {
             isAllOk = false;
             etEmail.setError("Wrong Email");
         }
-        if (password.length() < 8 || password.contains("") == true)//يجب فحص الاستاذ
+        if (password.length() < 8 || password.contains("") == true)
         {
             isAllOk = false;
             etpassword.setError("Wrong Password");
         }
-        if (repassword.length() ==password.length() || repassword.contains(password) == true)//يجب فحص الاستاذ
+        if (repassword.length() ==password.length() || repassword.contains(password) == true)
         {
             isAllOk=false;
             etRePassword.setError("Wrong RePassword");
         }
 
-        if (phone.length()<10||password.contains("")==true)//يجب فحص الاستاذ
+        if (phone.length()<10||phone.length()>10||phone.length()!=10||phone.contains("")==true)
         {
             isAllOk=false;
             etPhone.setError("Wrong Phone");
         }
         if (isAllOk) {
             Toast.makeText(this, "All Ok", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(singUp1.this, MainActivity.class);
+            startActivity(i);
         }
 
     }

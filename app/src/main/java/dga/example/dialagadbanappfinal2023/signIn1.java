@@ -34,16 +34,18 @@ public class signIn1 extends AppCompatActivity {
         //to close current activity
     }
 
-    public void onClickmain2(View v) {
+    /*public void onClickmain2(View v) {
         //to open new activity from current to next
         Intent i = new Intent(signIn1.this, MainActivity.class);
         startActivity(i);
         //to close current activity
         finish();
     }
-
+*/
     public void onClickSingincheck(View v) {
+
         checkEmailPassw();
+
     }
 
     public void checkEmailPassw() {
@@ -62,6 +64,8 @@ public class signIn1 extends AppCompatActivity {
         }
         if (isAllOk) {
             Toast.makeText(this, "All Ok", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(signIn1.this, MainActivity.class);
+            startActivity(i);
         }
 
     }
