@@ -79,9 +79,12 @@ public class singUp1 extends AppCompatActivity {
         }
         if (isAllOk) {
             Toast.makeText(this, "All Ok", Toast.LENGTH_SHORT).show();
+
             Intent i = new Intent(singUp1.this, MainActivity.class);
             startActivity(i);
+
         }
+        //ijsadhjhdksb
 
     }
 }
