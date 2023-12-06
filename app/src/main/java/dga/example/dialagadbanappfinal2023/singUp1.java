@@ -84,7 +84,7 @@ public class singUp1 extends AppCompatActivity {
             startActivity(i);
 
         }
-        //ijsadhjhdksb
+
 
     }
 }
