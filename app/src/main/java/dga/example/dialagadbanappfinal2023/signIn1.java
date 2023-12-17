@@ -10,6 +10,9 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import dga.example.dialagadbanappfinal2023.data.usersTable.MyUser;
+import dga.example.dialagadbanappfinal2023.data.usersTable.MyUserQuery;
+
 public class signIn1 extends AppCompatActivity {
     private TextInputEditText etEmail;
     private TextInputEditText etpassword;
@@ -63,7 +66,7 @@ public class signIn1 extends AppCompatActivity {
         if (isAllOk) {
             Toast.makeText(this, "All Ok", Toast.LENGTH_SHORT).show();
             //بناء قاعدة البيانات وارجاع مؤشر عليها
-            AppDatabase db = AppDatabase.getDB(getApplicationContext());
+            AppDatabace db = AppDatabace.getDB(getApplicationContext());
             // مؤشر لكائن عمليات الجدول
             MyUserQuery userQuery = db.getMyUserQuery();
             // ان لم يكن موجود ,استعداء العملية التي تنفذ الاستعلام الذي يفحص البريد وكلمه المرور ويعيد كائنا ان كان موجودا او لا
@@ -82,6 +85,7 @@ public class signIn1 extends AppCompatActivity {
             }
         }
     }
+}
 
 
 
