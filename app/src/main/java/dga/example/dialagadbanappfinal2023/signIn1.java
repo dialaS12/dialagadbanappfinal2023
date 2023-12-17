@@ -10,6 +10,9 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import dga.example.dialagadbanappfinal2023.data.usersTable.MyUser;
+import dga.example.dialagadbanappfinal2023.data.usersTable.MyUserQuery;
+
 public class signIn1 extends AppCompatActivity {
     private TextInputEditText etEmail;
     private TextInputEditText etpassword;
@@ -52,22 +55,35 @@ public class signIn1 extends AppCompatActivity {
         boolean isAllOk = true;
         String email = etEmail.getText().toString();
         String password = etpassword.getText().toString();
-        if (email.length() < 6 || email.contains("@") == false) ;
-        {
+        if (email.length() < 6 || email.contains("@") == false) {
             isAllOk = false;
             etEmail.setError("Wrong Email");
         }
-        if (password.length() < 8 || password.contains("") == true) ;
-        {
+        if (password.length() < 8 || password.contains(" ") == true) {
             isAllOk = false;
             etpassword.setError("Wrong Password");
         }
         if (isAllOk) {
             Toast.makeText(this, "All Ok", Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(signIn1.this, MainActivity.class);
-            startActivity(i);
-        }
+            //بناء قاعدة البيانات وارجاع مؤشر عليها
+            AppDatabace db = AppDatabace.getDB(getApplicationContext());
+            // مؤشر لكائن عمليات الجدول
+            MyUserQuery userQuery = db.getMyUserQuery();
+            // ان لم يكن موجود ,استعداء العملية التي تنفذ الاستعلام الذي يفحص البريد وكلمه المرور ويعيد كائنا ان كان موجودا او لا
+            MyUser myUser = userQuery.checkEmailPassw(email, password);
+            if (myUser == null) {
+                Toast.makeText(this, "Wrong Email Or Password`", Toast.LENGTH_LONG).show();
 
+
+            } else {
+
+                //ان كان هناالك حساب الايمل والباسورد ننتقل الى شاشه الرئيسيه
+                Intent i = new Intent(signIn1.this, MainActivity.class);
+                startActivity(i);
+                finish();
+
+            }
+        }
     }
 }
 
