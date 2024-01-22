@@ -7,7 +7,11 @@ import androidx.room.PrimaryKey;
 @Entity
 public class myClothes {
     @PrimaryKey(autoGenerate = true)
+    /**
+     * رقم القطعه
+     */
     public long keyid;
+
     /**
      * نوع القطعه
      */
@@ -29,8 +33,23 @@ public class myClothes {
      */
     public String TheMaterial;
 
+    /**
+     *رقم القطعه
+     */
+    public long CloId;
 
 
+    @Override
+    public String toString() {
+        return "myClothes{" +
+                "keyid=" + keyid +
+                ", TheType='" + TheType + '\'' +
+                ", ThePic='" + ThePic + '\'' +
+                ", TheSeason='" + TheSeason + '\'' +
+                ", TheColor='" + TheColor + '\'' +
+                ", TheMaterial='" + TheMaterial + '\'' +
+                '}';
+    }
 }
 
 

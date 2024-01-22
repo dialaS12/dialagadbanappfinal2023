@@ -16,6 +16,4 @@ public class TheUpperPart extends myClothes
      */
     public String TheUpperPartType;
 
-
-
 }

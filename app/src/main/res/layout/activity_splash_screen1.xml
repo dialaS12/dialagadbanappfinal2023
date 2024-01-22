@@ -17,12 +17,10 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/imageView9"
                 android:layout_width="match_parent"
-                android:layout_height="747dp"
-                android:background="#917AD3"
-                android:backgroundTint="#917AD3"
-                app:srcCompat="@mipmap/logodialanew_foreground" />
+                android:layout_height="match_parent"
+                app:srcCompat="@mipmap/logo" />
         </LinearLayout>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
