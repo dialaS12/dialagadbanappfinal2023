@@ -1,5 +1,6 @@
 package dga.example.dialagadbanappfinal2023;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,7 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 import dga.example.dialagadbanappfinal2023.data.usersTable.MyUser;
 import dga.example.dialagadbanappfinal2023.data.usersTable.MyUserQuery;
@@ -85,7 +90,50 @@ public class signIn1 extends AppCompatActivity {
             }
         }
     }
-}
+    public void onClickSingincheck_FB(View v) {
+
+        checkEmailPassw_FB();
+
+    }
+
+    public void checkEmailPassw_FB() {
+        boolean isAllOk = true;
+        String email1 = etEmail.getText().toString();
+        String password1 = etpassword.getText().toString();
+        if (email1.length() < 6 || email1.contains("@") == false) {
+            isAllOk = false;
+            etEmail.setError("Wrong Email");
+        }
+        if (password1.length() < 8 || password1.contains(" ") == true) {
+            isAllOk = false;
+            etpassword.setError("Wrong Password");
+        }
+        if (isAllOk) {
+            //עצם לביצוע רישום
+            FirebaseAuth auth=FirebaseAuth.getInstance();
+            //כניסה לחשבון בעזרת מיל וסיסמה
+            auth.signInWithEmailAndPassword(email1,password1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful())//אם הפעולה הצליחה
+                    {
+                        Toast.makeText(signIn1.this,"Signing in Succeeded",Toast.LENGTH_SHORT).show();
+                        //מעבר למסך הראשי
+                        Intent i=new Intent(signIn1.this,MainActivity.class);
+                        startActivity(i);
+                    }
+                    else {
+                        Toast.makeText(signIn1.this,"Signing in Failed",Toast.LENGTH_SHORT).show();
+                        etEmail.setError(task.getException().getMessage());//
+
+                    }
+                }
+
+            });
+            }
+        }
+    }
+
 
 
 

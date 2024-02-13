@@ -10,7 +10,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.ktx.Firebase;
 
 import dga.example.dialagadbanappfinal2023.data.usersTable.MyUser;
 import dga.example.dialagadbanappfinal2023.data.usersTable.MyUserQuery;
@@ -144,8 +149,24 @@ public class singUp1 extends AppCompatActivity {
         }
         if (isAllOk1) {
             //كائن لعمليه التسجيل
-            Firebas auth= FirebaseAuth.getInstance();
+            FirebaseAuth auth= FirebaseAuth.getInstance();
             //צירת חשבון בעזרת מיל וסיסמה
+            auth.createUserWithEmailAndPassword(email1,password1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task)
+                {
+                    if (task.isSuccessful())//אם הפעולה הצליחה
+                    {
+                        Toast.makeText(singUp1.this, "Signing up Succeeded", Toast.LENGTH_SHORT).show();
+                        finish();
+                    } else {
+                        Toast.makeText(singUp1.this, "Signing up Failed", Toast.LENGTH_SHORT).show();
+                        etEmail.setError(task.getException().getMessage());//הצגת הודעת השיגאה שהקבלה מהענן
+                    }
+
+
+                }
+            });
 
 
 
@@ -158,4 +179,4 @@ public class singUp1 extends AppCompatActivity {
 
 }
 
-}
+

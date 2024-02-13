@@ -2,6 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/mnComplete"
+        android:title="Complete" />
+    <item
         android:id="@+id/mnDelete"
         android:title="mnDelete" />
     <item

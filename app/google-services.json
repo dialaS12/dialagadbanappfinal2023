@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "428895538056",
+    "project_id": "dialagadbanappfinal2023",
+    "storage_bucket": "dialagadbanappfinal2023.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:428895538056:android:03ff10ac20424fb605c83d",
+        "android_client_info": {
+          "package_name": "dga.example.dialagadbanappfinal2023"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwflH0sDu-d4jiwtxk5bOWwNrhaObylGo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
