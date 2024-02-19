@@ -16,6 +16,7 @@ public class MyUser
     public String email;// بحاله لم يتم اعطاء اسم للعامود يكون اسم الصفه هو اسم العامود
     public String phone;//رقم هاتف الشخصي للمسخدم
     public String passw;//كلمة مرور
+    public String id;//رقم مميز
     public long getKeyid() {
         return keyid;
     }
@@ -30,6 +31,30 @@ public class MyUser
                 ", passw='" + passw + '\'' +
                 '}';
 
+    }
+
+    public void setKeyid(long keyid) {
+        this.keyid = keyid;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setPassw(String passw) {
+        this.passw = passw;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
 

@@ -12,14 +12,20 @@ import com.google.android.material.textfield.TextInputEditText;
 public class AddPic extends AppCompatActivity {
     //spnr3 تعريف صفه للكائن المرئي
     //private Spinner spnrSubject3;
-   // private Spinner spnrSubject4;
-    private Button
+    // private Spinner spnrSubject4;
+    private Button btnSummer;
+    private Button btnSpring;
+    private Button btnWinter;
+    private Button btnAutumn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_pic);
-        etEmail = (TextInputEditText) findViewById(R.id.etEmail);
+        btnSummer = (Button) findViewById(R.id.btnSummer);
+        btnSpring = (Button) findViewById(R.id.btnSpring);
+        btnWinter = (Button) findViewById(R.id.btnWinter);
+        btnAutumn = (Button) findViewById(R.id.btnAutumn);
 
         //spnr3 وضع مؤشر الصفه على الكائن المرئي الموجود بواجهه المستعمل
 //        spnrSubject3= findViewById(R.id.spnrSubject3);
@@ -43,5 +49,6 @@ public class AddPic extends AppCompatActivity {
 //        adapter.addAll(ar);
         //spnr4ربط الكائن المرئي بالوسيط
 //        spnrSubject4.setAdapter(adapter);
-    //}
+        //}
+    }
 }
