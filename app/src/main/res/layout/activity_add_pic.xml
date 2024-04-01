@@ -1,83 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/spnrSubject2"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     tools:context=".AddPic">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="add utf name" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="50dp"
+            android:text="To which part does the piece you want to add belong?"
+            android:textSize="24sp"
+            android:textStyle="bold|italic" />
+
+        <Spinner
+            android:id="@+id/spinnerPart"
+            android:layout_width="match_parent"
+            android:layout_height="55dp" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="327dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginRight="50dp"
+            android:text="To which season does the piece you want to add belong?"
+            android:textSize="24sp"
+            android:textStyle="bold|italic" />
+
+        <Spinner
+            android:id="@+id/spinnerSeason"
+            android:layout_width="match_parent"
+            android:layout_height="55dp" />
+
+        <ImageButton
+            android:id="@+id/imageButton8"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:srcCompat="@android:drawable/ic_menu_crop" />
+
+        <Button
+            android:id="@+id/btnpickcolor"
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#B388FF"
+            android:text="pick color" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginRight="50dp"
-                android:text="To which part does the piece you want to add belong?"
-                android:textSize="24sp"
-                android:textStyle="bold|italic" />
-
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="match_parent"
-                android:layout_height="55dp" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="327dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="80dp"
-                android:layout_marginRight="50dp"
-                android:text="To which season does the piece you want to add belong?"
-                android:textSize="24sp"
-                android:textStyle="bold|italic" />
-
-            <Spinner
-                android:id="@+id/spinner2"
-                android:layout_width="match_parent"
-                android:layout_height="55dp" />
-
-            <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                app:srcCompat="@android:drawable/ic_menu_crop" />
-
-            <Button
-                android:id="@+id/btnpickcolor"
-                android:layout_width="85dp"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#B388FF"
-                android:text="pick color" />
-
-            <Button
-                android:id="@+id/btnSave"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:backgroundTint="#B388FF"
-                android:text="Save" />
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnCancle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
                 android:backgroundTint="#B388FF"
                 android:text="Cancle" />
 
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:backgroundTint="#B388FF"
+                android:onClick="onClickSave_FB"
+                android:text="Save" />
         </LinearLayout>
 
-    </RelativeLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+</LinearLayout>

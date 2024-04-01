@@ -36,7 +36,83 @@ public class myClothes {
     /**
      *رقم القطعه
      */
-    public long CloId;
+    public String CloId;
+    public String uId;
+
+    public String getuId() {
+        return uId;
+    }
+
+    public void setuId(String uId) {
+        this.uId = uId;
+    }
+
+    public String getCloId() {
+        return CloId;
+    }
+
+    public void setCloId(String cloId) {
+        CloId = cloId;
+    }
+
+    public String title;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public long getKeyid() {
+        return keyid;
+    }
+
+    public void setKeyid(long keyid) {
+        this.keyid = keyid;
+    }
+
+    public String getTheType() {
+        return TheType;
+    }
+
+    public void setTheType(String theType) {
+        TheType = theType;
+    }
+
+    public String getThePic() {
+        return ThePic;
+    }
+
+    public void setThePic(String thePic) {
+        ThePic = thePic;
+    }
+
+    public String getTheSeason() {
+        return TheSeason;
+    }
+
+    public void setTheSeason(String theSeason) {
+        TheSeason = theSeason;
+    }
+
+    public String getTheColor() {
+        return TheColor;
+    }
+
+    public void setTheColor(String theColor) {
+        TheColor = theColor;
+    }
+
+    public String getTheMaterial() {
+        return TheMaterial;
+    }
+
+    public void setTheMaterial(String theMaterial) {
+        TheMaterial = theMaterial;
+    }
+
 
 
     @Override
