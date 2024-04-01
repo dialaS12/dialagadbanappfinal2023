@@ -172,6 +172,11 @@ public class AddPic extends AppCompatActivity {
 
 
     }
+
+    /**
+     *
+     * @param clothes
+     */
     private void Saveclothes_FB(myClothes clothes) {
         //مؤشر لقاعدة البيانات
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -200,6 +205,10 @@ public class AddPic extends AppCompatActivity {
 
 
     }
+
+    /**
+     *
+     */
     private void checkAndSaveClothes()
     {
         boolean isAllOk1 = true;
@@ -233,6 +242,10 @@ public class AddPic extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     * @param filePath
+     */
     private void uploadImage(Uri filePath) {
         if (filePath != null) {
             //יצירת דיאלוג התקדמות
