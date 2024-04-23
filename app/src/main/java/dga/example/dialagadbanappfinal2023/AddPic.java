@@ -3,6 +3,7 @@ package dga.example.dialagadbanappfinal2023;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -30,18 +31,17 @@ import com.google.firebase.storage.UploadTask;
 import java.util.UUID;
 
 import dga.example.dialagadbanappfinal2023.data.clothesTable.myClothes;
-import dga.example.dialagadbanappfinal2023.data.usersTable.MyUser;
 
 public class AddPic extends AppCompatActivity {
     //spnr3 تعريف صفه للكائن المرئي
-    private TextView textView6;
+    private TextView whichPart;
     private Spinner spinnerPart;
-    private TextView textView5;
+    private TextView whichSeason;
     private Spinner spinnerSeason;
     private Button btnpickcolor;
     private Button btnSave;
     private Button btnCancle;
-    private ImageButton imageButton8;
+    private ImageButton image8;
     //upload: 1 add Xml image view or button and upload button
     //upload: 2 add next fileds
     private final int IMAGE_PICK_CODE = 100;// קוד מזהה לבקשת בחירת תמונה
@@ -53,21 +53,27 @@ public class AddPic extends AppCompatActivity {
 
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_pic);
-        textView5 = (TextView) findViewById(R.id.textView5);
-        textView6 = (TextView) findViewById(R.id.textView6);
+        whichSeason = (TextView) findViewById(R.id.whichSeason);
+        whichPart = (TextView) findViewById(R.id.whichPart);
         btnpickcolor = (Button) findViewById(R.id.btnpickcolor);
         btnSave = (Button) findViewById(R.id.btnSave);
         btnCancle = (Button) findViewById(R.id.btnCancle);
         etTitle=findViewById(R.id.etTitle);
 
-
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkAndSaveClothes();
+            }
+        });
         //upload: 3
-        imageButton8 = (ImageButton) findViewById(R.id.imageButton8);
-        imageButton8.setOnClickListener(new View.OnClickListener() {
+        image8=(ImageButton)findViewById(R.id.image8);
+        image8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 checkPermission();
@@ -121,7 +127,7 @@ public class AddPic extends AppCompatActivity {
         if (resultCode==RESULT_OK && requestCode== IMAGE_PICK_CODE){
             //a עידכון תכונת כתובת התמונה
             toUploadimageUri = data.getData();//קבלת כתובת התמונה הנתונים שניבחרו
-            imageButton8.setImageURI(toUploadimageUri);// הצגת התמונה שנבחרה על רכיב התמונה
+            image8.setImageURI(toUploadimageUri);// הצגת התמונה שנבחרה על רכיב התמונה
         }
     }
     //בדיקת ועדכון הרשאות:
@@ -194,10 +200,10 @@ public class AddPic extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 //هل تم تنفيذ المطلوب بنجاح
                 if (task.isSuccessful()) {
-                    Toast.makeText(AddPic.this, "Succeeded to add User", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddPic.this, "Succeeded to add pic", Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
-                    Toast.makeText(AddPic.this, "Failed to add User", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddPic.this, "Failed to add pic", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -302,6 +308,10 @@ public class AddPic extends AppCompatActivity {
 
 
     }
+
+
+
+
 
 
 
