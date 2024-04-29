@@ -149,12 +149,12 @@ public class MainActivity extends AppCompatActivity {
 
         ClothesAdapter.addAll(allClothes);
         spnrSubject1.setAdapter(ClothesAdapter);
-        spnrSubject1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                showPopUpMenu(view, ClothesAdapter.getItem(i));
-            }
-        });
+//        .setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                showPopUpMenu(view, ClothesAdapter.getItem(i));
+//            }
+//        });
     }
         /**
          * تجهيز قا~مة الصور حسب رقم القطعه
@@ -227,6 +227,10 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.itmProfile) {
             Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show();
+            //to open new activity from current to next activity
+            Intent i = new Intent(MainActivity.this, MyProfile.class);
+            startActivity(i);
+
 
         }
         if (item.getItemId() == R.id.itmSignOut) {
@@ -235,13 +239,17 @@ public class MainActivity extends AppCompatActivity {
 
         }
         if (item.getItemId() == R.id.itmAddPic) {
-            Toast.makeText(this, "Add", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "AddPic", Toast.LENGTH_SHORT).show();
             //to open new activity from current to next activity
             Intent i = new Intent(MainActivity.this, AddPic.class);
             startActivity(i);
         }
         //Exstra(m.sameh)
         if (item.getItemId() == R.id.itemFavorites) {
+            Toast.makeText(this, "Favorites", Toast.LENGTH_SHORT).show();
+            //to open new activity from current to next activity
+            Intent i = new Intent(MainActivity.this, FavoritesPage.class);
+            startActivity(i);
         }
 
         return true;
@@ -318,6 +326,12 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog dialog=builder.create();//بناء شباك الحوار -دايالوج
         dialog.show();//عرض الشباك
     }
+    public void onClickSaveOutFitForTheWeek(View v) {
+        //to open new activity from current to next
+        Intent i = new Intent(MainActivity.this, SaveOutFitForTheWeek.class);
+        startActivity(i);
+        //to close current activity
+    }
 
 
 
@@ -325,7 +339,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        }
+
+}
 
 
 

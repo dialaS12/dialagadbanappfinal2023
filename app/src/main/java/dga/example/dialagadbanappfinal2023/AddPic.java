@@ -82,11 +82,12 @@ public class AddPic extends AppCompatActivity {
         });
 
 
+
         //spnr3 وضع مؤشر الصفه على الكائن المرئي الموجود بواجهه المستعمل
         spinnerPart = findViewById(R.id.spinnerPart);
 //        spnr4 وضع مؤشر الصفه على الكائن المرئي الموجود بواجهه المستعمل
         spinnerSeason =findViewById(R.id.spinnerSeason);
-//        spnr3,4 بناء الوسيط وتحديد واجهه تنسيق لمعطى واحد
+//        spnr3,4 بناء الوسيط(للاجزاء) وتحديد واجهه تنسيق لمعطى واحد
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //spnr3 data sourceمصدر معطيات (ممكن ان يكون قائمة من قاعدة بيانات مثلا)
@@ -95,16 +96,18 @@ public class AddPic extends AppCompatActivity {
         adapter.addAll(ar);
         //spnr3ربط الكائن المرئي بالوسيط
         spinnerPart.setAdapter(adapter);
-
+        //وسسط للفلصول
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item);
         //spnr4 بناء الوسيط وتحديد واجهه تنسيق لمعطى واحد
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //spnr4 data sourceمصدر معطيات (ممكن ان يكون قائمة من قاعدة بيانات مثلا)
         String[] arr = {"Summer", "Spring", "Winter", "Autumn"};
         //spnr4تحديد المعطيات للوسيط
-        adapter.addAll(ar);
+        adapter2.addAll(arr);
         //spnr4ربط الكائن المرئي بالوسيط
-        spinnerSeason.setAdapter(adapter);
+        spinnerSeason.setAdapter(adapter2);
     }
+
     private void pickImageFromGallery() {
         //implicit intent (מרומז) to pick image
         Intent intent = new Intent(Intent.ACTION_PICK);

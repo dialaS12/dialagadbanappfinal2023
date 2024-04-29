@@ -3,6 +3,7 @@ package dga.example.dialagadbanappfinal2023;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -26,5 +27,13 @@ public class SaveOutFitForTheWeek extends AppCompatActivity {
         //spnr6ربط الكائن المرئي بالوسيط
         spnrSubject44.setAdapter(adapter);
     }
-
+    @Override//داله لكي يبين التلت نقاط في الشاشه
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.main_menu,menu);
+        return true;
     }
+
+}
+
+

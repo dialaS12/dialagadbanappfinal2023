@@ -20,7 +20,8 @@
                 android:id="@+id/etTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="add utf name" />
+                android:hint="Add a special name to Outfit to enable you to search for it easily "
+                android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
