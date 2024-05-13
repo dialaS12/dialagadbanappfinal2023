@@ -19,4 +19,5 @@ public class WaysToAddPic extends AppCompatActivity {
         return true;
     }
 
+
 }
