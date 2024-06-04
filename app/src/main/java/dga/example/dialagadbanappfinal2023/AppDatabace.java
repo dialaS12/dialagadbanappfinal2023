@@ -20,7 +20,7 @@ import dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothes;
 import dga.example.dialagadbanappfinal2023.data.usersTable.MyUser;
 import dga.example.dialagadbanappfinal2023.data.usersTable.MyUserQuery;
 
-@Database(entities = {MyUser.class, MySeason.class, MyClothes.class, myAccessories.class, TheLowerPart.class, TheShoes.class, TheUpperPart.class},version = 1)
+@Database(entities = {MyUser.class, MySeason.class, MyClothes.class, myAccessories.class, TheLowerPart.class, TheShoes.class, TheUpperPart.class},version = 2)
 
 public  abstract class AppDatabace extends RoomDatabase
 {

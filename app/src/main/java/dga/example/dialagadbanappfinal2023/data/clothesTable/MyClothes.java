@@ -15,55 +15,30 @@ public class MyClothes {
     /**
      * نوع القطعه
      */
-    public String TheType;
+    public String theType;
     /**
      * الصوره للقطعه
      */
-    public String ThePic;
+    public String thePic;
     /**
      * الفصل المناسب لارتداء القطعه
      */
-    public String TheSeason;
+    public String theSeason;
     /**
      * لون القطعه
      */
-    public String TheColor;
+    public String theColor;
     /**
      * خامه القطعه(حرير,قطن..)
      */
-    public String TheMaterial;
+    public String theMaterial;
+    public String title;
 
     /**
      *رقم القطعه
      */
-    public String CloId;
-    public String uId;
-
-    public String getuId() {
-        return uId;
-    }
-
-    public void setuId(String uId) {
-        this.uId = uId;
-    }
-
-    public String getCloId() {
-        return CloId;
-    }
-
-    public void setCloId(String cloId) {
-        CloId = cloId;
-    }
-
-    public String title;
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    public String cloId;
+    public String uid;
 
     public long getKeyid() {
         return keyid;
@@ -74,57 +49,67 @@ public class MyClothes {
     }
 
     public String getTheType() {
-        return TheType;
+        return theType;
     }
 
     public void setTheType(String theType) {
-        TheType = theType;
+        this.theType = theType;
     }
 
     public String getThePic() {
-        return ThePic;
+        return thePic;
     }
 
     public void setThePic(String thePic) {
-        ThePic = thePic;
+        this.thePic = thePic;
     }
 
     public String getTheSeason() {
-        return TheSeason;
+        return theSeason;
     }
 
     public void setTheSeason(String theSeason) {
-        TheSeason = theSeason;
+        this.theSeason = theSeason;
     }
 
     public String getTheColor() {
-        return TheColor;
+        return theColor;
     }
 
     public void setTheColor(String theColor) {
-        TheColor = theColor;
+        this.theColor = theColor;
     }
 
     public String getTheMaterial() {
-        return TheMaterial;
+        return theMaterial;
     }
 
     public void setTheMaterial(String theMaterial) {
-        TheMaterial = theMaterial;
+        this.theMaterial = theMaterial;
     }
 
+    public String getCloId() {
+        return cloId;
+    }
 
+    public void setCloId(String cloId) {
+        this.cloId = cloId;
+    }
 
-    @Override
-    public String toString() {
-        return "myClothes{" +
-                "keyid=" + keyid +
-                ", TheType='" + TheType + '\'' +
-                ", ThePic='" + ThePic + '\'' +
-                ", TheSeason='" + TheSeason + '\'' +
-                ", TheColor='" + TheColor + '\'' +
-                ", TheMaterial='" + TheMaterial + '\'' +
-                '}';
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
 

@@ -32,7 +32,7 @@
             android:layout_marginTop="40dp"
             android:layout_marginRight="50dp"
             android:text="To which part does the piece you want to add belong?"
-            android:textSize="24sp"
+            android:textSize="16sp"
             android:textStyle="bold|italic" />
 
         <Spinner
@@ -45,10 +45,9 @@
             android:layout_width="327dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
-            android:layout_marginTop="80dp"
             android:layout_marginRight="50dp"
             android:text="To which season does the piece you want to add belong?"
-            android:textSize="24sp"
+            android:textSize="16sp"
             android:textStyle="bold|italic" />
 
         <Spinner
@@ -59,7 +58,7 @@
         <ImageButton
             android:id="@+id/image8"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="200dp"
             app:srcCompat="@android:drawable/ic_menu_crop" />
 
         <Button

@@ -42,7 +42,7 @@ public interface MyClothesQuery1 {
     @Update
     void update(MyClothes... values);
     //عملية تعيد جميع الصور حسب  رقم القطعه
-    @Query("SELECT * FROM MyClothes WHERE CloId=:key_id ")
+    @Query("SELECT * FROM MyClothes WHERE cloId=:key_id ")
     List<MyClothes> getClothesByCloId(Long key_id);
 }
 

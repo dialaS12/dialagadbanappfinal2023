@@ -29,6 +29,15 @@ public class signIn1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in1);
+        if(FirebaseAuth.getInstance().getCurrentUser()!=null)
+        {
+
+            //ان كان هناالك حساب الايمل والباسورد ننتقل الى شاشه الرئيسيه
+            Intent i = new Intent(signIn1.this, MainActivity.class);
+            startActivity(i);
+            finish();
+
+        }
         etEmail = (TextInputEditText) findViewById(R.id.etEmail);
         etpassword = (TextInputEditText) findViewById(R.id.etPassword);
         btnSingin = (Button) findViewById(R.id.btnSingin);

@@ -192,12 +192,12 @@ public class AddPic extends AppCompatActivity {
         //استخراج الرقم المميز للمستعمل الذ يسجل دخول لاستعماله كاسم لل"document
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         //ناء الكائن الذي سيتم حفظه
-        clothes.setuId(uid);
-        String id = db.collection("users").document(uid).collection("clothes").getId();
+        clothes.setUid(uid);
+        String id = db.collection("MyUsers").document(uid).collection("clothes").document().getId();
         clothes.setCloId(id);
         //اضافه كائن "لمجموعه" المستعلمين ومعالج حدث لفحص نجاح المطلوب
         //معالج حدث لفحص هل تم المطلوب من قاعدة البيانات
-        db.collection("users").document(uid).collection("clothes").document(id).set(clothes).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("MyUsers").document(uid).collection("clothes").document(id).set(clothes).addOnCompleteListener(new OnCompleteListener<Void>() {
             //داله معالج الحدث
             @Override
             public void onComplete(@NonNull Task<Void> task) {
