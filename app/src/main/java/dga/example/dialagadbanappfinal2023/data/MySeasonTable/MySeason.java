@@ -9,6 +9,7 @@ public class MySeason
 {
     @PrimaryKey(autoGenerate = true)//تحديد الصفة كمفتاح رئيسي والذي ينتج بشكل اوتماتي
     public long key_id;
+    //اسم الفصل (ربيع/خريف/شتاء/صيف)
     public String SeasonName;
 
     @Override

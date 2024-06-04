@@ -9,7 +9,7 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 
-import com.squareup.picasso.Picasso;
+//import com.squareup.picasso.Picasso;
 
 import dga.example.dialagadbanappfinal2023.R;
 
@@ -63,12 +63,12 @@ public class MyClothesAdapter extends ArrayAdapter<MyClothes> {
         if(imageUrL==null) return;
         //todo: add dependency to module gradle:
         //    implementation 'com.squareup.picasso:picasso:2.5.2'
-        Picasso.with(getContext())
-                .load(imageUrL)//הורדת התמונה לפי כתובת
-                .centerCrop()
-                .error(R.drawable.logodiala_background)//התמונה שמוצגת אם יש בעיה בהורדת התמונה
-                .resize(90,90)//שינוי גודל התמונה
-                .into(toView);// להציג בריכיב התמונה המיועד לתמונה זו
+       // Picasso.with(getContext())
+              //  .load(imageUrL)//הורדת התמונה לפי כתובת
+              //  .centerCrop()
+             //   .error(R.drawable.logodiala_background)//התמונה שמוצגת אם יש בעיה בהורדת התמונה
+               // .resize(90,90)//שינוי גודל התמונה
+              //  .into(toView);// להציג בריכיב התמונה המיועד לתמונה זו
     }
 
 }
