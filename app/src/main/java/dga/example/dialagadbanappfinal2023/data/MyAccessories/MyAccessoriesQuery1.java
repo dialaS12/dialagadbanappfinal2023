@@ -2,13 +2,11 @@ package dga.example.dialagadbanappfinal2023.data.MyAccessories;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
-import androidx.room.Entity;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 import java.util.List;
-import dga.example.dialagadbanappfinal2023.data.TheLowerPartTable.TheLowerPart;
-import dga.example.dialagadbanappfinal2023.data.clothesTable.myClothes;
+
 /**
  * واجهه تحوي عمليات /دوال/استعمالات على قاعدة البايانات
  */

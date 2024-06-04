@@ -5,10 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 
-public class MyClothesAdapter extends ArrayAdapter<myClothes> {
+import com.squareup.picasso.Picasso;
+
+import dga.example.dialagadbanappfinal2023.R;
+
+public class MyClothesAdapter extends ArrayAdapter<MyClothes> {
     //המזהה של קובץ עיצוב הפריט
     private final int itemLayout;
     /**
@@ -29,11 +34,42 @@ public class MyClothesAdapter extends ArrayAdapter<myClothes> {
      */
     public View getView(int position, @NonNull View convertView, @NonNull ViewGroup parent)
     {
-        return super.getView(position,convertView,parent);
-        //
+        //בניית הפריט הגרפי מתו קובץ העיצוב
+        View vitem= convertView;
+        if(vitem==null)
+            vitem=LayoutInflater.from(getContext()).inflate(itemLayout,parent,false);
+        // //קבלת הפניות לרכיבים בקובץ העיצוב
+        ImageView imageView=vitem.findViewById(R.id.imageVitm);
+        //קבלת הנתון (עצם) הנוכחי
+        MyClothes current=getItem(position);
+       // downloadImageUsingPicasso(current.getThePic(),im);
+
+
+
+        return vitem;
+
 
 
 
     }
+    /**
+     * הצגת תמונה ישירות מהענן בעזרת המחלקה ״פיקאסו״
+     * @param imageUrL כתובת התמונה בענן/שרת
+     * @param toView רכיב תמונה המיועד להצגת התמונה אחרי ההורדה
+     */
+    private void downloadImageUsingPicasso(String imageUrL, ImageView toView)
+    {
+        // אם אין תמונה= כתובת ריקה אז לא עושים כלום מפסיקים את הפעולה
+        if(imageUrL==null) return;
+        //todo: add dependency to module gradle:
+        //    implementation 'com.squareup.picasso:picasso:2.5.2'
+        Picasso.with(getContext())
+                .load(imageUrL)//הורדת התמונה לפי כתובת
+                .centerCrop()
+                .error(R.drawable.logodiala_background)//התמונה שמוצגת אם יש בעיה בהורדת התמונה
+                .resize(90,90)//שינוי גודל התמונה
+                .into(toView);// להציג בריכיב התמונה המיועד לתמונה זו
+    }
+
 }
 

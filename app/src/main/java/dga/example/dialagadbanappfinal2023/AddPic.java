@@ -30,7 +30,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.UUID;
 
-import dga.example.dialagadbanappfinal2023.data.clothesTable.myClothes;
+import dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothes;
 
 public class AddPic extends AppCompatActivity {
     //spnr3 تعريف صفه للكائن المرئي
@@ -48,7 +48,7 @@ public class AddPic extends AppCompatActivity {
     private final int PERMISSION_CODE = 101;//קוד מזהה לבחירת הרשאת גישה לקבצים
     private Uri toUploadimageUri;// כתוב הקובץ(תמונה) שרוצים להעלות
     private Uri downladuri;//כתובת הקוץ בענן אחרי ההעלאה
-    private myClothes clothes=new myClothes(); //עצם/נתון שרוצים לשמור
+    private MyClothes clothes=new MyClothes(); //עצם/נתון שרוצים לשמור
     private TextInputEditText etTitle;
 
 
@@ -186,7 +186,7 @@ public class AddPic extends AppCompatActivity {
      *
      * @param clothes
      */
-    private void Saveclothes_FB(myClothes clothes) {
+    private void Saveclothes_FB(MyClothes clothes) {
         //مؤشر لقاعدة البيانات
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         //استخراج الرقم المميز للمستعمل الذ يسجل دخول لاستعماله كاسم لل"document

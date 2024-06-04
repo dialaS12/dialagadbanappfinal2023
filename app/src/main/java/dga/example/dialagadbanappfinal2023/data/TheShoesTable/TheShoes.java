@@ -3,10 +3,10 @@ package dga.example.dialagadbanappfinal2023.data.TheShoesTable;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import dga.example.dialagadbanappfinal2023.data.clothesTable.myClothes;
+import dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothes;
 
 @Entity
-public class TheShoes extends myClothes
+public class TheShoes extends MyClothes
 {
     @PrimaryKey(autoGenerate = true)
     public long keyid;

@@ -16,11 +16,11 @@ import dga.example.dialagadbanappfinal2023.data.TheShoesTable.TheShoes;
 import dga.example.dialagadbanappfinal2023.data.TheUpperPartTable.MyTheUpperPartQuery1;
 import dga.example.dialagadbanappfinal2023.data.TheUpperPartTable.TheUpperPart;
 import dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothesQuery1;
-import dga.example.dialagadbanappfinal2023.data.clothesTable.myClothes;
+import dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothes;
 import dga.example.dialagadbanappfinal2023.data.usersTable.MyUser;
 import dga.example.dialagadbanappfinal2023.data.usersTable.MyUserQuery;
 
-@Database(entities = {MyUser.class, MySeason.class, myClothes.class, myAccessories.class, TheLowerPart.class, TheShoes.class, TheUpperPart.class},version = 1)
+@Database(entities = {MyUser.class, MySeason.class, MyClothes.class, myAccessories.class, TheLowerPart.class, TheShoes.class, TheUpperPart.class},version = 1)
 
 public  abstract class AppDatabace extends RoomDatabase
 {

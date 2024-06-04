@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class myClothes {
+public class MyClothes {
     @PrimaryKey(autoGenerate = true)
     /**
      * رقم القطعه

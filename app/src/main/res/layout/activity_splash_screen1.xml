@@ -3,15 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".Splash_Screen1">
 
     <ImageView
         android:id="@+id/imageView9"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:cropToPadding="true"
-        android:scaleType="centerCrop"
-        app:srcCompat="@mipmap/logo" />
-
+        android:background="#FCF9F1"
+        android:backgroundTint="#FCF9F1"
+        app:srcCompat="@mipmap/logodialanewlogo_round" />
 </RelativeLayout>

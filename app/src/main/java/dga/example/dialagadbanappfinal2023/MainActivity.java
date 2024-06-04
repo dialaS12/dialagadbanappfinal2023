@@ -14,33 +14,45 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dga.example.dialagadbanappfinal2023.data.MySeasonTable.MySeason;
 import dga.example.dialagadbanappfinal2023.data.MySeasonTable.MySeasonQuery1;
+import dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothes;
+import dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothesAdapter;
 import dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothesQuery1;
-import dga.example.dialagadbanappfinal2023.data.clothesTable.myClothes;
 
 public class MainActivity extends AppCompatActivity {
     //spnr1 تعريف صفه للكائن المرئي
     private Spinner spnrSubject1;
     private FloatingActionButton fabAdd1;
-    private FloatingActionButton fabAdd2;
-    private FloatingActionButton fabAdd3;
-    private FloatingActionButton fabAdd4;
-    private FloatingActionButton fabAdd5;
-    private ImageView imageView1;
-    private ImageView imageView2;
-    private ImageView imageView3;
-    private ImageView imageView4;
+    private Spinner spinnerspnrUpper;
+    private Spinner spinnerLowerPart;
+    private Spinner spinnerTheShoes;
+    private Spinner spinnermyAccessories;
+    MyClothesAdapter adapterUpper,adapterLower,adapterTheShoes,adapterAccessories;
+
+
+    // private FloatingActionButton fabAdd4;
+   // private FloatingActionButton fabAdd5;
+  //  private ImageView imageView1;
+   // private ImageView imageView2;
+  //  private ImageView imageView3;
+    //private ImageView imageView4;
+
 
 
     @SuppressLint("MissingInflatedId")
@@ -48,16 +60,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        spnrSubject1 = (Spinner) findViewById(R.id.spnrSubject1);
-        imageView1 = (ImageView) findViewById(R.id.imageView1);
-        imageView2 = (ImageView) findViewById(R.id.imageView2);
-        imageView3 = (ImageView) findViewById(R.id.imageView3);
-        imageView4 = (ImageView) findViewById(R.id.imageView4);
+        spinnerspnrUpper=(Spinner)findViewById(R.id.spinnerspnrUpper) ;
+        spinnerLowerPart=(Spinner)findViewById(R.id.spinnerLowerPart);
+        spinnerTheShoes=(Spinner)findViewById(R.id.spinnerTheShoes);
+        spinnermyAccessories=(Spinner)findViewById(R.id.spinnermyAccessories);
+//        imageView1 = (ImageView) findViewById(R.id.imageView1);
+       // imageView2 = (ImageView) findViewById(R.id.imageVitm);
+//        imageView3 = (ImageView) findViewById(R.id.imageView3);
+        //imageView4 = (ImageView) findViewById(R.id.imageView4);
         fabAdd1 = (FloatingActionButton) findViewById(R.id.fabAdd1);
-        fabAdd2 = (FloatingActionButton) findViewById(R.id.fabAdd2);
-        fabAdd3 = (FloatingActionButton) findViewById(R.id.fabAdd3);
-        fabAdd4 = (FloatingActionButton) findViewById(R.id.fabAdd4);
-        fabAdd5 = (FloatingActionButton) findViewById(R.id.fabAdd5);
+//        fabAdd2 = (FloatingActionButton) findViewById(R.id.fabAdd2);
+//        fabAdd3 = (FloatingActionButton) findViewById(R.id.fabAdd3);
+//        fabAdd4 = (FloatingActionButton) findViewById(R.id.fabAdd4);
+       // fabAdd5 = (FloatingActionButton) findViewById(R.id.fav1);
+        adapterUpper = new MyClothesAdapter(getApplicationContext(), android.R.layout.simple_spinner_item);
+         adapterLower = new MyClothesAdapter(getApplicationContext(), android.R.layout.simple_spinner_item);
+        adapterTheShoes = new MyClothesAdapter(getApplicationContext(), android.R.layout.simple_spinner_item);
+         adapterAccessories = new MyClothesAdapter(getApplicationContext(), android.R.layout.simple_spinner_item);
+
         fabAdd1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,10 +86,13 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
+        spinnerspnrUpper.setAdapter(adapterUpper);
+        spinnerLowerPart.setAdapter(adapterLower);
+        spinnermyAccessories.setAdapter(adapterAccessories);
+        spinnerTheShoes.setAdapter(adapterTheShoes);
 
         //spnr2 وضع مؤشر الصفه على الكائن المرئي الموجود بواجهه المستعمل
-        spnrSubject1 = findViewById(R.id.spnrSubject1);
+//        spnrSubject1 = findViewById(R.id.pickDis1);
         //spnr3 بناء الوسيط وتحديد واجهه تنسيق لمعطى واحد
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -81,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
         spnrSubject1.setAdapter(adapter);
 
     }
+
 
     //public void onClickAddPic(View v)
     // {
@@ -144,8 +168,8 @@ public class MainActivity extends AppCompatActivity {
         AppDatabace db1 = AppDatabace.getDB(getApplicationContext());// قاعدة بناء
 
         MyClothesQuery1 clothesQuery1 = db1.getMyClothesQuery1();
-        List<myClothes> allClothes = clothesQuery1.getAllmyClothes();
-        ArrayAdapter<myClothes> ClothesAdapter = new ArrayAdapter<myClothes>(getApplicationContext(), android.R.layout.simple_dropdown_item_1line);
+        List<MyClothes> allClothes = clothesQuery1.getAllmyClothes();
+        ArrayAdapter<MyClothes> ClothesAdapter = new ArrayAdapter<MyClothes>(getApplicationContext(), android.R.layout.simple_dropdown_item_1line);
 
         ClothesAdapter.addAll(allClothes);
         spnrSubject1.setAdapter(ClothesAdapter);
@@ -164,8 +188,8 @@ public class MainActivity extends AppCompatActivity {
             AppDatabace db = AppDatabace.getDB(getApplicationContext());
             MyClothesQuery1 clothesQuery1 = db.getMyClothesQuery1();
             //يجب اضافة عملية تعيد جميع المهمات حسب رقم الموضوغ
-            List<myClothes> allClothes = clothesQuery1.getClothesByCloId(key_id);
-            ArrayAdapter<myClothes> ClothesAdapter = new ArrayAdapter<myClothes>(this, android.R.layout.simple_spinner_dropdown_item);
+            List<MyClothes> allClothes = clothesQuery1.getClothesByCloId(key_id);
+            ArrayAdapter<MyClothes> ClothesAdapter = new ArrayAdapter<MyClothes>(this, android.R.layout.simple_spinner_dropdown_item);
             ClothesAdapter.addAll(allClothes);
             spnrSubject1.setAdapter(ClothesAdapter);
 
@@ -195,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
          * @param v
          * @param item
          */
-        public void showPopUpMenu(View v, myClothes item) {
+        public void showPopUpMenu(View v, MyClothes item) {
             //بناء القائمة popup menu
             PopupMenu popup = new PopupMenu(this, v);
             //ملف القائمة
@@ -274,8 +298,9 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         Log.d("HA","onResume");
         Toast.makeText(this, "onResume", Toast.LENGTH_SHORT).show();
-        initSubjectSpnr();
-        initAllListView();
+//        initSubjectSpnr();
+      //  initAllListView();
+        readTaskFrom_FB();
     }
     @Override
     protected void onPause() {
@@ -332,6 +357,62 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
         //to close current activity
     }
+    /**
+     *  קריאת נתונים ממסד הנתונים firestore
+     * @return .... רשימת הנתונים שנקראה ממסד הנתונים
+     */
+    public void readTaskFrom_FB()
+    {
+        //مؤشر لقاعدة البيانات
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        //استخراج الرقم المميز للمستعمل الذ يسجل دخول لاستعماله كاسم لل"document
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        //معالج حدث لفحص هل تم المطلوب من قاعدة البيانات
+        db.collection("users").document(uid).collection("clothes");
+
+        //בניית רשימה ריקה
+        ArrayList<MyClothes> arrayList =new ArrayList<>();
+        //קישור לקבוצה לקבוצה שרוצים לקרוא
+        db.collection("users").document(uid).collection("clothes").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    /**
+                     * תגובה לאירוע השלמת קריאת הנתונים
+                     * @param task הנתונים שהתקבלו מענן מסד הנתונים
+                     */
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                        if(task.isSuccessful())// אם בקשת הנתונים התקבלה בהצלחה
+                        {
+                            adapterUpper.clear();
+                            adapterLower.clear();
+                            adapterAccessories.clear();
+                            adapterTheShoes.clear();
+                            //מעבר על כל ה״מסמכים״= עצמים והוספתם למבנה הנתונים
+                            for (DocumentSnapshot document : task.getResult().getDocuments()) {
+                                //המרת העצם לטיפוס שלו// הוספת העצם למבנה הנתונים
+                                MyClothes clothes = document.toObject(MyClothes.class);
+                                ///        String[] ar = {"The Upper Part", "The Lower Part", "The Shoe", "Accessories"};
+                                if (clothes.getTheType().equals("The Upper Part"))
+                                    adapterUpper.add(clothes);
+                                if (clothes.getTheType().equals("The Lower Part"))
+                                    adapterLower.add(clothes);
+                                if (clothes.getTheType().equals("The Shoe"))
+                                    adapterTheShoes.add(clothes);
+                                if (clothes.getTheType().equals("Accessories"))
+                                    adapterAccessories.add(clothes);
+
+                            }
+                        }
+                        else{
+                            Toast.makeText(MainActivity.this, "Error Reading data"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+
+
+
 
 
 
