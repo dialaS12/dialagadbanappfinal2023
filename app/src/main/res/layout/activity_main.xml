@@ -14,8 +14,9 @@
             android:id="@+id/fav1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="147dp"
-            android:layout_marginTop="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+
             android:layout_weight="1"
             android:clickable="true"
             app:srcCompat="@android:drawable/star_off" />
@@ -46,19 +47,17 @@
 
                 <Button
                     android:id="@+id/btnSaveOutfit1"
-                    android:layout_width="150dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:backgroundTint="#B388FF"
                     android:onClick="onClickSaveOutFitForTheWeek"
                     android:text="Save Outfit for The Week" />
 
                 <Button
                     android:id="@+id/btnSeason"
-                    android:layout_width="250dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="30dp"
+
                     android:backgroundTint="#B388FF"
                     android:hint="Season/date"
                     android:text="Season/date" />

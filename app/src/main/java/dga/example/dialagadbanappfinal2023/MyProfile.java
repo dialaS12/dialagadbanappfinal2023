@@ -35,7 +35,7 @@ public class MyProfile extends AppCompatActivity {
 
 
         }
-        if (item.getItemId() == R.id.itmSignOut) {
+        if (item.getItemId() == R.id.itmLogOut) {
             Toast.makeText(this, "SignOut", Toast.LENGTH_SHORT).show();
             showYesNoDialog();
 
@@ -56,6 +56,7 @@ public class MyProfile extends AppCompatActivity {
 
         return true;
     }
+
     public void showYesNoDialog()
     {
         //جهيز بناء شباك حوار "دايلوغ"يتلقى برامتر مؤشر للنشاط(اكتيففتي)الحالي
@@ -83,5 +84,7 @@ public class MyProfile extends AppCompatActivity {
         });
         AlertDialog dialog=builder.create();//بناء شباك الحوار -دايالوج
         dialog.show();//عرض الشباك
+
     }
+
 }

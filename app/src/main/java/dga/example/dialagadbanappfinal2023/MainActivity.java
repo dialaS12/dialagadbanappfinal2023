@@ -257,8 +257,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
-        if (item.getItemId() == R.id.itmSignOut) {
-            Toast.makeText(this, "SignOut", Toast.LENGTH_SHORT).show();
+        if (item.getItemId() == R.id.itmLogOut) {
+            Toast.makeText(this, "Log Out", Toast.LENGTH_SHORT).show();
             showYesNoDialog();
 
         }
@@ -274,6 +274,19 @@ public class MainActivity extends AppCompatActivity {
             //to open new activity from current to next activity
             Intent i = new Intent(MainActivity.this, FavoritesPage.class);
             startActivity(i);
+
+        }
+        if(item.getItemId()==R.id.mnPlayMusic)
+        {
+            Toast.makeText(this, "Play Music", Toast.LENGTH_SHORT).show();
+            Intent serviceIntn=new Intent(getApplicationContext(),MyAdudioPlayerService.class);
+            startService(serviceIntn);
+        }
+        if(item.getItemId()==R.id.mnStopMusic)
+        {
+            Toast.makeText(this, "Stop Music", Toast.LENGTH_SHORT).show();
+            Intent serviceIntn=new Intent(getApplicationContext(),MyAdudioPlayerService.class);
+            startService(serviceIntn);
         }
 
         return true;
