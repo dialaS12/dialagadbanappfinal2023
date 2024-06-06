@@ -1,0 +1,32 @@
+@startuml
+class AddPic {
+- TextView whichPart
+- Spinner spinnerPart
+- TextView whichSeason
+- Spinner spinnerSeason
+- Button btnpickcolor
+- Button btnSave
+- Button btnCancle
+- ImageButton image8
+- int IMAGE_PICK_CODE
+- int PERMISSION_CODE
+- Uri toUploadimageUri
+- Uri downladuri
+- MyClothes clothes
+- TextInputEditText etTitle
+# void onCreate(Bundle)
+- void pickImageFromGallery()
+# void onActivityResult(int,int,Intent)
+- void checkPermission()
++ void onRequestPermissionsResult(int,String[],int[])
+- void Saveclothes_FB(MyClothes)
+- void checkAndSaveClothes()
+- void uploadImage(Uri)
++ void onClickSave_FB(View)
+}
+
+
+
+
+AppCompatActivity <|-- AddPic
+@enduml

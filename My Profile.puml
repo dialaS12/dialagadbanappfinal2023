@@ -1,0 +1,75 @@
+@startuml
+class MainActivity {
+- Spinner spnrSubject1
+- FloatingActionButton fabAdd1
+- Spinner spinnerspnrUpper
+- Spinner spinnerLowerPart
+- Spinner spinnerTheShoes
+- Spinner spinnermyAccessories
+~ MyClothesAdapter adapterUpper
+# void onCreate(Bundle)
+- void initSubjectSpnr()
++ boolean onCreateOptionsMenu(Menu)
+- void initAllListView()
+- void initListViewBySubjId(long)
++ void showMenu(View)
++ void onClick(View)
++ void showPopUpMenu(View,MyClothes)
++ boolean onOptionsItemSelected(MenuItem)
+# void onRestart()
+# void onStart()
+# void onResume()
+# void onPause()
+# void onDestroy()
+# void onStop()
++ void showYesNoDialog()
++ void onClickSaveOutFitForTheWeek(View)
++ void readTaskFrom_FB()
+}
+note left of MainActivity::spnrSubject1
+spnr1 تعريف صفه للكائن المرئي
+end note
+
+note left of MainActivity::onCreate(Bundle)
+
+     *هذا الكود يقوم بتهيئة عناصر الواجهة المختلفة للنشاط (عناصر Spinner وFloatingActionButton وبعض ImageView غير المفعلة)، ويقوم بتهيئة المحولات التي ستستخدم لتوفير البيانات لعناصر Spinner.
+     * @param savedInstanceState
+     
+end note
+note right of MainActivity::initAllListView()
+
+     * تجهيز قائمة جميع المهمهات وعرضها ب list view
+     
+end note
+note left of MainActivity::initListViewBySubjId(long)
+
+         * تجهيز قا~مة الصور حسب رقم القطعه
+         * رقم الموضوع param key_id
+         
+end note
+note right of MainActivity::showMenu(View)
+
+         * داله مساعدة لفنح قائمة تتلقى بارمتر للكائن الذي سبب فتح القائمة
+         *
+         * @param v
+         
+end note
+note left of MainActivity::showPopUpMenu(View,MyClothes)
+
+         * داله مساعدة لفتح قائمة تتلقى بارمتر للكائن الذي سبب فتح القائمة
+         *
+         * @param v
+         * @param item
+         
+end note
+note right of MainActivity::readTaskFrom_FB()
+
+     *  קריאת נתונים ממסד הנתונים firestore
+     * @return .... רשימת הנתונים שנקראה ממסד הנתונים
+     
+end note
+
+
+
+AppCompatActivity <|-- MainActivity
+@enduml

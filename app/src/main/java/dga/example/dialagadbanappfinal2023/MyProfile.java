@@ -20,12 +20,13 @@ public class MyProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_profile);
     }
+
     @Override//داله لكي يبين التلت نقاط في الشاشه
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        getMenuInflater().inflate(R.menu.main_menu,menu);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
+
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.itmProfile) {
             Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show();
@@ -36,15 +37,9 @@ public class MyProfile extends AppCompatActivity {
 
         }
         if (item.getItemId() == R.id.itmLogOut) {
-            Toast.makeText(this, "SignOut", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Log Out", Toast.LENGTH_SHORT).show();
             showYesNoDialog();
 
-        }
-        if (item.getItemId() == R.id.itmAddPic) {
-            Toast.makeText(this, "AddPic", Toast.LENGTH_SHORT).show();
-            //to open new activity from current to next activity
-            Intent i = new Intent(MyProfile.this, AddPic.class);
-            startActivity(i);
         }
         //Exstra(m.sameh)
         if (item.getItemId() == R.id.itemFavorites) {
@@ -52,10 +47,22 @@ public class MyProfile extends AppCompatActivity {
             //to open new activity from current to next activity
             Intent i = new Intent(MyProfile.this, FavoritesPage.class);
             startActivity(i);
-        }
 
+        }
+        if (item.getItemId() == R.id.mnPlayMusic) {
+            Toast.makeText(this, "Play Music", Toast.LENGTH_SHORT).show();
+            Intent serviceIntn = new Intent(getApplicationContext(), MyAdudioPlayerService.class);
+            startService(serviceIntn);
+        }
+        if (item.getItemId() == R.id.mnStopMusic) {
+            Toast.makeText(this, "Stop Music", Toast.LENGTH_SHORT).show();
+            Intent serviceIntn = new Intent(getApplicationContext(), MyAdudioPlayerService.class);
+            startService(serviceIntn);
+        }
         return true;
     }
+
+
 
     public void showYesNoDialog()
     {

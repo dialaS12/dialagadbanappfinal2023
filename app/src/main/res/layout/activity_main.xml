@@ -71,10 +71,10 @@
 
                 android:text="UpperPart" />
 
-            <Spinner
+            <ListView
                 android:id="@+id/spinnerspnrUpper"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1" />
             <TextView
@@ -83,10 +83,10 @@
                 android:layout_height="wrap_content"
                 android:text="LowerPart" />
 
-            <Spinner
+            <ListView
                 android:id="@+id/spinnerLowerPart"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1" />
             <TextView
@@ -95,10 +95,10 @@
                 android:layout_height="wrap_content"
                 android:text="TheShoes" />
 
-            <Spinner
+            <ListView
                 android:id="@+id/spinnerTheShoes"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1" />
             <TextView
@@ -107,10 +107,10 @@
                 android:layout_height="wrap_content"
                 android:text="myAccessories" />
 
-            <Spinner
+            <ListView
                 android:id="@+id/spinnermyAccessories"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1" />
 

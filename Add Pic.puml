@@ -1,0 +1,99 @@
+@startuml
+class AddPic {
+- TextView whichPart
+- Spinner spinnerPart
+- TextView whichSeason
+- Spinner spinnerSeason
+- Button btnpickcolor
+- Button btnSave
+- Button btnCancle
+- ImageButton image8
+- int IMAGE_PICK_CODE
+- int PERMISSION_CODE
+- Uri toUploadimageUri
+- Uri downladuri
+- MyClothes clothes
+- TextInputEditText etTitle
+# void onCreate(Bundle)
+- void pickImageFromGallery()
+# void onActivityResult(int,int,Intent)
+- void checkPermission()
++ void onRequestPermissionsResult(int,String[],int[])
+- void Saveclothes_FB(MyClothes)
+- void checkAndSaveClothes()
+- void uploadImage(Uri)
++ void onClickSave_FB(View)
+}
+note top of AddPic
+
+ * داله اضافه الصور الى التطبيق
+ 
+end note
+
+note left of AddPic::whichPart
+spnr3 تعريف صفه للكائن المرئي
+end note
+note right of AddPic::IMAGE_PICK_CODE
+ קוד מזהה לבקשת בחירת תמונה
+end note
+note left of AddPic::PERMISSION_CODE
+קוד מזהה לבחירת הרשאת גישה לקבצים
+end note
+note right of AddPic::toUploadimageUri
+ כתוב הקובץ(תמונה) שרוצים להעלות
+end note
+note left of AddPic::downladuri
+כתובת הקוץ בענן אחרי ההעלאה
+end note
+note right of AddPic::clothes
+עצם/נתון שרוצים לשמור
+end note
+
+note left of AddPic::pickImageFromGallery()
+
+     *يقوم بإنشاء نافذة انتقاء الصور من معرض الصور على الجهاز
+     
+end note
+note right of AddPic::onActivityResult(int,int,Intent)
+
+     *
+     * @param requestCode מספר הקשה
+     * @param resultCode תוצאה הבקשה (אם נבחר משהו או בוטלה)
+     * @param data הנתונים שנבחרו
+     
+end note
+note left of AddPic::checkPermission()
+
+     * בדיקה האם יש הרשאה לגישה לקבצים בטלפון
+     
+end note
+note right of AddPic::onRequestPermissionsResult(int,String[],int[])
+ يقوم بمعالجة استجابات طلبات الإذن في التطبيق. عندما يتم طلب إذن من المستخدم للوصول إلى معرض الصور
+     * @param requestCode The request code passed in מספר בקשת ההרשאה
+     * @param permissions The requested permissions. Never null. רשימת ההרשאות לאישור
+     * @param grantResults The grant results for the corresponding permissions תוצאה עבור כל הרשאה
+     *   PERMISSION_GRANTED אושר or PERMISSION_DENIED נדחה . Never null.
+     
+end note
+note left of AddPic::Saveclothes_FB(MyClothes)
+
+     * يقوم بحفظ بيانات الثياب (أو الملابس) في قاعدة البيانات Firestore من خلال Firebase.
+     * @param clothes
+     
+end note
+note right of AddPic::checkAndSaveClothes()
+
+     *هذا الكود يقوم بفحص مدخلات المستخدم ومن ثم حفظ البيانات في حالة توافر كل البيانات المطلوبة
+     
+end note
+note left of AddPic::uploadImage(Uri)
+
+     *
+     * @param filePath
+     
+end note
+
+
+
+AppCompatActivity <|-- AddPic
+@enduml

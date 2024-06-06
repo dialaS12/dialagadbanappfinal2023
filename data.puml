@@ -1,0 +1,161 @@
+@startuml
+interface dga.example.dialagadbanappfinal2023.data.TheUpperPartTable.MyTheUpperPartQuery1 {
+~ List<TheUpperPart> getAll()
+~ void insertAll(TheUpperPart)
+~ void delete(TheUpperPart)
+~ void delete(int)
+~ void insert(TheUpperPart)
+~ void update(TheUpperPart)
+}
+
+class dga.example.dialagadbanappfinal2023.data.TheShoesTable.TheShoes {
++ long keyid
++ int ShoesSize
+}
+
+class dga.example.dialagadbanappfinal2023.data.TheUpperPartTable.TheUpperPart {
++ long keyid
++ String TheUpperPartType
+}
+
+interface dga.example.dialagadbanappfinal2023.data.usersTable.MyUserQuery {
+~ List<MyUser> getAll()
+~ List<MyUser> loadAllByIds(int[])
+~ MyUser checkEmailPassw(String,String)
+~ void insertAll(MyUser)
+~ void delete(MyUser)
+~ void delete(int)
+~ void insert(MyUser)
+~ void update(MyUser)
+~ MyUser checkEmail(String)
+}
+
+interface dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothesQuery1 {
+~ List<MyClothes> getAllmyClothes()
+~ List<MyClothes> getAll()
+~ void insertAll(MyClothes)
+~ void delete(MyClothes)
+~ void delete(int)
+~ void insert(MyClothes)
+~ void update(MyClothes)
+~ List<MyClothes> getClothesByCloId(Long)
+}
+
+interface dga.example.dialagadbanappfinal2023.data.MySeasonTable.MySeasonQuery1 {
+~ List<MySeason> getAll()
+~ void insertAll(MySeason)
+~ void delete(MySeason)
+~ void delete(int)
+~ void insert(MySeason)
+~ void update(MySeason)
+~ MySeason checkSeason(String)
+}
+
+interface dga.example.dialagadbanappfinal2023.data.TheShoesTable.MyShoesQuery1 {
+~ List<TheShoes> getAll()
+~ void insertAll(TheShoes)
+~ void delete(TheShoes)
+~ void delete(int)
+~ void insert(TheShoes)
+~ void update(TheShoes)
+}
+
+class dga.example.dialagadbanappfinal2023.data.MySeasonTable.MySeason {
++ long key_id
++ String SeasonName
++ String toString()
++ long getKey_id()
+}
+
+
+interface dga.example.dialagadbanappfinal2023.data.MyAccessories.MyAccessoriesQuery1 {
+~ List<MyAccessoriesQuery1> getAll()
+~ void insertAll(myAccessories)
+~ void delete(myAccessories)
+~ void delete(int)
+~ void update(myAccessories)
+~ void insert(myAccessories)
+}
+
+class dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothes {
++ long keyid
++ String theType
++ String thePic
++ String theSeason
++ String theColor
++ String theMaterial
++ String title
++ String cloId
++ String uid
++ long getKeyid()
++ void setKeyid(long)
++ String getTheType()
++ void setTheType(String)
++ String getThePic()
++ void setThePic(String)
++ String getTheSeason()
++ void setTheSeason(String)
++ String getTheColor()
++ void setTheColor(String)
++ String getTheMaterial()
++ void setTheMaterial(String)
++ String getCloId()
++ void setCloId(String)
++ String getUid()
++ void setUid(String)
++ String getTitle()
++ void setTitle(String)
+}
+
+
+class dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothesAdapter {
+- int itemLayout
++ View getView(int,View,ViewGroup)
+- void downloadImageUsingPicasso(String,ImageView)
+}
+
+
+class dga.example.dialagadbanappfinal2023.data.TheLowerPartTable.TheLowerPart {
++ long keyid
++ int TheLowerPartSize
+}
+
+interface dga.example.dialagadbanappfinal2023.data.TheLowerPartTable.MyTheLowerPartQuery1 {
+~ List<TheLowerPart> getAll()
+~ void insertAll(TheLowerPart)
+~ void delete(TheLowerPart)
+~ void delete(int)
+~ void insert(TheLowerPart)
+~ void update(TheLowerPart)
+}
+
+class dga.example.dialagadbanappfinal2023.data.usersTable.MyUser {
++ long keyid
++ String fullName
++ String email
++ String phone
++ String passw
++ String id
++ long getKeyid()
++ String toString()
++ void setKeyid(long)
++ void setFullName(String)
++ void setEmail(String)
++ void setPhone(String)
++ void setPassw(String)
++ void setId(String)
+}
+
+
+class dga.example.dialagadbanappfinal2023.data.MyAccessories.myAccessories {
++ long keyid
+}
+
+
+
+dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothes <|-- dga.example.dialagadbanappfinal2023.data.TheShoesTable.TheShoes
+dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothes <|-- dga.example.dialagadbanappfinal2023.data.TheUpperPartTable.TheUpperPart
+android.widget.ArrayAdapter <|-- dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothesAdapter
+dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothes <|-- dga.example.dialagadbanappfinal2023.data.TheLowerPartTable.TheLowerPart
+dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothes <|-- dga.example.dialagadbanappfinal2023.data.MyAccessories.myAccessories
+@enduml

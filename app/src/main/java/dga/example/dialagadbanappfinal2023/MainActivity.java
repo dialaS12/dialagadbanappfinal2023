@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -35,14 +36,18 @@ import dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothes;
 import dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothesAdapter;
 import dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothesQuery1;
 
+/**
+ * داله الصفحة الرئيسية التي تحوي طقم الملابس
+ */
+
 public class MainActivity extends AppCompatActivity {
     //spnr1 تعريف صفه للكائن المرئي
     private Spinner spnrSubject1;
     private FloatingActionButton fabAdd1;
-    private Spinner spinnerspnrUpper;
-    private Spinner spinnerLowerPart;
-    private Spinner spinnerTheShoes;
-    private Spinner spinnermyAccessories;
+    private ListView spinnerspnrUpper;
+    private ListView spinnerLowerPart;
+    private ListView spinnerTheShoes;
+    private ListView spinnermyAccessories;
     MyClothesAdapter adapterUpper,adapterLower,adapterTheShoes,adapterAccessories;
 
 
@@ -54,16 +59,19 @@ public class MainActivity extends AppCompatActivity {
     //private ImageView imageView4;
 
 
-
+    /**
+     *هذا الكود يقوم بتهيئة عناصر الواجهة المختلفة للنشاط (عناصر Spinner وFloatingActionButton وبعض ImageView غير المفعلة)، ويقوم بتهيئة المحولات التي ستستخدم لتوفير البيانات لعناصر Spinner.
+     * @param savedInstanceState
+     */
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        spinnerspnrUpper=(Spinner)findViewById(R.id.spinnerspnrUpper) ;
-        spinnerLowerPart=(Spinner)findViewById(R.id.spinnerLowerPart);
-        spinnerTheShoes=(Spinner)findViewById(R.id.spinnerTheShoes);
-        spinnermyAccessories=(Spinner)findViewById(R.id.spinnermyAccessories);
+        spinnerspnrUpper=findViewById(R.id.spinnerspnrUpper) ;
+        spinnerLowerPart=findViewById(R.id.spinnerLowerPart);
+        spinnerTheShoes=findViewById(R.id.spinnerTheShoes);
+        spinnermyAccessories=findViewById(R.id.spinnermyAccessories);
 //        imageView1 = (ImageView) findViewById(R.id.imageView1);
        // imageView2 = (ImageView) findViewById(R.id.imageVitm);
 //        imageView3 = (ImageView) findViewById(R.id.imageView3);
@@ -73,11 +81,18 @@ public class MainActivity extends AppCompatActivity {
 //        fabAdd3 = (FloatingActionButton) findViewById(R.id.fabAdd3);
 //        fabAdd4 = (FloatingActionButton) findViewById(R.id.fabAdd4);
        // fabAdd5 = (FloatingActionButton) findViewById(R.id.fav1);
-        adapterUpper = new MyClothesAdapter(getApplicationContext(), android.R.layout.simple_spinner_item);
-         adapterLower = new MyClothesAdapter(getApplicationContext(), android.R.layout.simple_spinner_item);
-        adapterTheShoes = new MyClothesAdapter(getApplicationContext(), android.R.layout.simple_spinner_item);
-         adapterAccessories = new MyClothesAdapter(getApplicationContext(), android.R.layout.simple_spinner_item);
+        adapterUpper = new MyClothesAdapter(getApplicationContext(),R.layout.clothes_item_layout);
+         adapterLower = new MyClothesAdapter(getApplicationContext(), R.layout.clothes_item_layout);
+        adapterTheShoes = new MyClothesAdapter(getApplicationContext(), R.layout.clothes_item_layout);
+         adapterAccessories = new MyClothesAdapter(getApplicationContext(), R.layout.clothes_item_layout);
+         spinnerspnrUpper.setAdapter(adapterUpper);
+        spinnerLowerPart.setAdapter(adapterLower);
+        spinnermyAccessories.setAdapter(adapterAccessories);
+        spinnerTheShoes.setAdapter(adapterTheShoes);
 
+/**
+ * الهدف هو فتح نشاط (Activity) جديد يسمى AddPic عند النقر على زر fabAdd1.
+ */
         fabAdd1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,6 +101,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+/**
+ * الهدف من هذه الأسطر هو ربط محولات البيانات (Adapters) مع عناصر القوائم المنسدلة (Spinners) في واجهة المستخدم. وهذا يسمح بعرض البيانات في هذه القوائم المنسدلة. بمعنى آخر، يقوم الكود بتعيين المحولات لعناصر Spinner بحيث يتم ملء القوائم المنسدلة بالبيانات التي توفرها هذه المحولات.
+ */
         spinnerspnrUpper.setAdapter(adapterUpper);
         spinnerLowerPart.setAdapter(adapterLower);
         spinnermyAccessories.setAdapter(adapterAccessories);
@@ -228,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
             popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                 @Override
                 public boolean onMenuItemClick(MenuItem menuItem) {
-                    if (menuItem.getItemId() == R.id.mnComplete) {
+                    if (menuItem.getItemId() == R.id.mnTakePhoto) {
                         //هنا نكتب ردة فعل لاختيار هذا العنصر من القائمة
                         Toast.makeText(MainActivity.this, "Complete", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(MainActivity.this, AddPic.class);
@@ -248,6 +266,12 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
+    /**
+     * الهدف من هذا الكود هو معالجة تفاعل المستخدم مع عناصر القائمة (Menu Items) في نشاط (Activity) أندرويد. بناءً على العنصر الذي تم اختياره، ينفذ التطبيق إجراءات محددة مثل عرض رسائل قصيرة (Toasts)، بدء أنشطة جديدة، أو بدء/إيقاف خدمة تشغيل الموسيقى.
+     * @param item
+     * @return
+     */
+
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.itmProfile) {
             Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show();
@@ -261,12 +285,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Log Out", Toast.LENGTH_SHORT).show();
             showYesNoDialog();
 
-        }
-        if (item.getItemId() == R.id.itmAddPic) {
-            Toast.makeText(this, "AddPic", Toast.LENGTH_SHORT).show();
-            //to open new activity from current to next activity
-            Intent i = new Intent(MainActivity.this, AddPic.class);
-            startActivity(i);
         }
         //Exstra(m.sameh)
         if (item.getItemId() == R.id.itemFavorites) {
@@ -291,6 +309,11 @@ public class MainActivity extends AppCompatActivity {
 
         return true;
     }
+
+    /**
+     * الهدف من الكود في دالة onRestart هو تنفيذ إجراءات معينة عند إعادة تشغيل نشاط (Activity) أندرويد بعد أن كان في وضع التوقف المؤقت أو بعد أن تم إيقافه بالكامل ثم استئنافه. هذا هو جزء من دورة حياة النشاط في أندرويد.
+     *
+     */
     @Override
     protected void onRestart() {
         super.onRestart();
@@ -386,7 +409,7 @@ public class MainActivity extends AppCompatActivity {
         //בניית רשימה ריקה
         ArrayList<MyClothes> arrayList =new ArrayList<>();
         //קישור לקבוצה לקבוצה שרוצים לקרוא
-        db.collection("users").document(uid).collection("clothes").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection("MyUsers").document(uid).collection("clothes").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     /**
                      * תגובה לאירוע השלמת קריאת הנתונים
                      * @param task הנתונים שהתקבלו מענן מסד הנתונים

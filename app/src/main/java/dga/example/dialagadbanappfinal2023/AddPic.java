@@ -10,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -32,6 +33,9 @@ import java.util.UUID;
 
 import dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothes;
 
+/**
+ * داله اضافه الصور الى التطبيق
+ */
 public class AddPic extends AppCompatActivity {
     //spnr3 تعريف صفه للكائن المرئي
     private TextView whichPart;
@@ -108,6 +112,9 @@ public class AddPic extends AppCompatActivity {
         spinnerSeason.setAdapter(adapter2);
     }
 
+    /**
+     *يقوم بإنشاء نافذة انتقاء الصور من معرض الصور على الجهاز
+     */
     private void pickImageFromGallery() {
         //implicit intent (מרומז) to pick image
         Intent intent = new Intent(Intent.ACTION_PICK);
@@ -159,7 +166,7 @@ public class AddPic extends AppCompatActivity {
     }
     //התשובה של בקשת ההרשאות על ידי requestPermissions מתקבלות הפעולה onRequestPermissionsResult:
     //upload: 7
-    /**
+    /** يقوم بمعالجة استجابات طلبات الإذن في التطبيق. عندما يتم طلب إذن من المستخدم للوصول إلى معرض الصور
      * @param requestCode The request code passed in מספר בקשת ההרשאה
      * @param permissions The requested permissions. Never null. רשימת ההרשאות לאישור
      * @param grantResults The grant results for the corresponding permissions תוצאה עבור כל הרשאה
@@ -183,7 +190,7 @@ public class AddPic extends AppCompatActivity {
     }
 
     /**
-     *
+     * يقوم بحفظ بيانات الثياب (أو الملابس) في قاعدة البيانات Firestore من خلال Firebase.
      * @param clothes
      */
     private void Saveclothes_FB(MyClothes clothes) {
@@ -216,7 +223,7 @@ public class AddPic extends AppCompatActivity {
     }
 
     /**
-     *
+     *هذا الكود يقوم بفحص مدخلات المستخدم ومن ثم حفظ البيانات في حالة توافر كل البيانات المطلوبة
      */
     private void checkAndSaveClothes()
     {
@@ -252,7 +259,7 @@ public class AddPic extends AppCompatActivity {
     }
 
     /**
-     *
+     *هذا الكود يُقوم برفع الصورة إلى خدمة Firebase Storage ومن ثم حفظ عنوان الصورة في قاعدة البيانات.
      * @param filePath
      */
     private void uploadImage(Uri filePath) {
@@ -309,7 +316,14 @@ public class AddPic extends AppCompatActivity {
 
         checkAndSaveClothes();
 
-
+/**
+ * //داله لكي يبين التلت نقاط في الشاشه
+ */
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
     }
 
 

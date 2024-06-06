@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 
 //import com.squareup.picasso.Picasso;
 
+import com.squareup.picasso.Picasso;
+
 import dga.example.dialagadbanappfinal2023.R;
 
 public class MyClothesAdapter extends ArrayAdapter<MyClothes> {
@@ -42,7 +44,7 @@ public class MyClothesAdapter extends ArrayAdapter<MyClothes> {
         ImageView imageView=vitem.findViewById(R.id.imageVitm);
         //קבלת הנתון (עצם) הנוכחי
         MyClothes current=getItem(position);
-       // downloadImageUsingPicasso(current.getThePic(),im);
+        downloadImageUsingPicasso(current.getThePic(),imageView);
 
 
 
@@ -62,13 +64,12 @@ public class MyClothesAdapter extends ArrayAdapter<MyClothes> {
         // אם אין תמונה= כתובת ריקה אז לא עושים כלום מפסיקים את הפעולה
         if(imageUrL==null) return;
         //todo: add dependency to module gradle:
-        //    implementation 'com.squareup.picasso:picasso:2.5.2'
-       // Picasso.with(getContext())
-              //  .load(imageUrL)//הורדת התמונה לפי כתובת
-              //  .centerCrop()
-             //   .error(R.drawable.logodiala_background)//התמונה שמוצגת אם יש בעיה בהורדת התמונה
-               // .resize(90,90)//שינוי גודל התמונה
-              //  .into(toView);// להציג בריכיב התמונה המיועד לתמונה זו
+        Picasso.with(getContext())
+                .load(imageUrL)//הורדת התמונה לפי כתובת
+                .centerCrop()
+                .error(R.drawable.logodiala_background)//התמונה שמוצגת אם יש בעיה בהורדת התמונה
+                .resize(100,100)//שינוי גודל התמונה
+                .into(toView);// להציג בריכיב התמונה המיועד לתמונה זו
     }
 
 }

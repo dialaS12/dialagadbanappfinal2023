@@ -19,4 +19,5 @@ public class FavoritesPage extends AppCompatActivity {
         return true;
     }
 
+
 }

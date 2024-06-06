@@ -8,9 +8,6 @@
         android:id="@+id/itmLogOut"
         android:title="LogOut" />
     <item
-        android:id="@+id/itmAddPic"
-        android:title="AddPic" />
-    <item
         android:id="@+id/itemFavorites"
         android:title="Favorites" />
     <item
