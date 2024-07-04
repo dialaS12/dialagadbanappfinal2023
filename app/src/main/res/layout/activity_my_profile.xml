@@ -39,15 +39,6 @@
                     android:text="ToggleButton" />
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="55dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginRight="55dp"
-                app:srcCompat="@android:drawable/ic_menu_gallery" />
-
             <TextView
                 android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
@@ -59,6 +50,12 @@
                 android:textSize="16.5sp"
                 android:textStyle="bold|italic" />
 
+            <TextView
+                android:id="@+id/tvSummer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Summer" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -66,7 +63,7 @@
                 android:orientation="horizontal">
 
 
-                <EditText
+                <Spinner
                     android:id="@+id/etSummer1"
                     android:layout_width="176dp"
                     android:layout_height="wrap_content"
@@ -82,7 +79,7 @@
                     android:text="till"
                     android:textSize="15sp" />
 
-                <EditText
+                <Spinner
                     android:id="@+id/etSummer2"
                     android:layout_width="174dp"
                     android:layout_height="wrap_content"
@@ -90,6 +87,13 @@
                     android:ems="10"
                     android:inputType="date" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvSpring"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Spring" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -97,7 +101,7 @@
                 android:orientation="horizontal">
 
 
-                <EditText
+                <Spinner
                     android:id="@+id/etSpring1"
                     android:layout_width="176dp"
                     android:layout_height="wrap_content"
@@ -113,7 +117,7 @@
                     android:text="till"
                     android:textSize="15sp" />
 
-                <EditText
+                <Spinner
                     android:id="@+id/etSpring2"
                     android:layout_width="174dp"
                     android:layout_height="wrap_content"
@@ -121,6 +125,13 @@
                     android:ems="10"
                     android:inputType="date" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvWinter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Winter" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -128,7 +139,7 @@
                 android:orientation="horizontal">
 
 
-                <EditText
+                <Spinner
                     android:id="@+id/etWinter1"
                     android:layout_width="176dp"
                     android:layout_height="wrap_content"
@@ -144,7 +155,7 @@
                     android:text="till"
                     android:textSize="15sp" />
 
-                <EditText
+                <Spinner
                     android:id="@+id/etWinter2"
                     android:layout_width="174dp"
                     android:layout_height="wrap_content"
@@ -152,6 +163,13 @@
                     android:ems="10"
                     android:inputType="date" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvAutumn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Autumn" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -159,7 +177,7 @@
                 android:orientation="horizontal">
 
 
-                <EditText
+                <Spinner
                     android:id="@+id/etAutumn1"
                     android:layout_width="176dp"
                     android:layout_height="wrap_content"
@@ -175,7 +193,7 @@
                     android:text="till"
                     android:textSize="15sp" />
 
-                <EditText
+                <Spinner
                     android:id="@+id/etAutumn2"
                     android:layout_width="174dp"
                     android:layout_height="wrap_content"

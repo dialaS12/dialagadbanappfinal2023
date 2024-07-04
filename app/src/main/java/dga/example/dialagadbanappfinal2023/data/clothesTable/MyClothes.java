@@ -1,11 +1,12 @@
 package dga.example.dialagadbanappfinal2023.data.clothesTable;
 
 
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class MyClothes {
+public class MyClothes  {
     @PrimaryKey(autoGenerate = true)
     /**
      * رقم القطعه

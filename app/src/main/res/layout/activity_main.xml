@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
@@ -19,11 +19,12 @@
 
             android:layout_weight="1"
             android:clickable="true"
+            android:onClick="onClickFavorits"
             app:srcCompat="@android:drawable/star_off" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabAdd1"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
@@ -60,13 +61,14 @@
 
                     android:backgroundTint="#B388FF"
                     android:hint="Season/date"
+                    android:onClick="onClickDate"
                     android:text="Season/date" />
 
-                <SearchView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
             </LinearLayout>
+
+            <SearchView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
             <TextView
                 android:id="@+id/textView1UpperPart"
@@ -74,13 +76,19 @@
                 android:layout_height="wrap_content"
 
                 android:text="UpperPart" />
-
-            <dga.example.dialagadbanappfinal2023.data.clothesTable.HorizontalListView
+            <view class="androidx.appcompat.app.AlertController$RecycleListView"
                 android:id="@+id/lstvUpper"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1" />
+                android:layout_height="wrap_content">
+
+            </view>
+
+<!--            <dga.example.dialagadbanappfinal2023.data.clothesTable.HorizontalListView-->
+<!--                android:id="@+id/lstvUpper"-->
+<!--                android:layout_width="700dp"-->
+<!--                android:layout_height="200dp"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:layout_weight="1" />-->
             <TextView
                 android:id="@+id/textView12LowerPart"
                 android:layout_width="match_parent"

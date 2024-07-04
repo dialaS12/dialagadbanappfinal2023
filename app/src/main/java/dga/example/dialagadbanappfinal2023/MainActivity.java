@@ -14,13 +14,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.HorizontalScrollView;
-import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.Spinner;
 import android.widget.Toast;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -40,6 +39,7 @@ import java.util.List;
 import dga.example.dialagadbanappfinal2023.data.MySeasonTable.MySeason;
 import dga.example.dialagadbanappfinal2023.data.MySeasonTable.MySeasonQuery1;
 import dga.example.dialagadbanappfinal2023.data.clothesTable.HorizontalListView;
+import dga.example.dialagadbanappfinal2023.data.clothesTable.MyAdapterRecLst;
 import dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothes;
 import dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothesAdapter;
 import dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothesQuery1;
@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
     private HorizontalListView lstvTheShoes;
     private HorizontalListView lstvrmyAccessories;
     MyClothesAdapter adapterUpper,adapterLower,adapterTheShoes,adapterAccessories;
+  //  private RecyclerView recyclerView;
+    private MyAdapterRecLst adapterRecLst;
 
 
     // private FloatingActionButton fabAdd4;
@@ -76,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        lstvUpperr=findViewById(R.id.lstvUpper) ;
+       // lstvUpperr=findViewById(R.id.lstvUpper) ;
         lstvLowerPart=findViewById(R.id.lstvLowerPart);
         lstvTheShoes=findViewById(R.id.lstvTheShoes);
         lstvrmyAccessories=findViewById(R.id.lstvrmyAccessories);
@@ -97,6 +99,14 @@ public class MainActivity extends AppCompatActivity {
        lstvLowerPart.setAdapter(adapterLower);
         lstvrmyAccessories.setAdapter(adapterAccessories);
        lstvTheShoes.setAdapter(adapterTheShoes);
+//        // Find RecyclerView by Id (from the activity_main.xml)
+//         recyclerView = findViewById(R.id.lstvUpper);
+//// Instantiate SubjectAdapter with the data
+//         adapterRecLst = new MyAdapterRecLst(new ArrayList<MyClothes>(),this);
+//// Set adapter with RecyclerView
+//        recyclerView.setAdapter(adapterRecLst);
+//// Set LayoutManager
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
 
 
 
@@ -310,6 +320,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(i);
 
         }
+        if (item.getItemId() == R.id.itmSaveoutfits) {
+            Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show();
+            //to open new activity from current to next activity
+            Intent i = new Intent(MainActivity.this, MyProfile.class);
+            startActivity(i);
+        }
         if(item.getItemId()==R.id.mnPlayMusic)
         {
             Toast.makeText(this, "Play Music", Toast.LENGTH_SHORT).show();
@@ -409,6 +425,19 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
         //to close current activity
     }
+    public void onClickFavorits(View v) {
+        //to open new activity from current to next
+        Intent i = new Intent(MainActivity.this, FavoritesPage.class);
+        startActivity(i);
+        //to close current activity
+    }
+    public void onClickDate(View v) {
+        //to open new activity from current to next
+        Intent i = new Intent(MainActivity.this, MyProfile.class);
+        startActivity(i);
+        //to close current activity
+    }
+
     /**
      *  קריאת נתונים ממסד הנתונים firestore
      * @return .... רשימת הנתונים שנקראה ממסד הנתונים
@@ -435,7 +464,7 @@ public class MainActivity extends AppCompatActivity {
 
                         if(task.isSuccessful())// אם בקשת הנתונים התקבלה בהצלחה
                         {
-                            adapterUpper.clear();
+                            //adapterRecLst .getList().clear();
                             adapterLower.clear();
                             adapterAccessories.clear();
                             adapterTheShoes.clear();
@@ -445,7 +474,7 @@ public class MainActivity extends AppCompatActivity {
                                 MyClothes clothes = document.toObject(MyClothes.class);
                                 ///        String[] ar = {"The Upper Part", "The Lower Part", "The Shoe", "Accessories"};
                                 if (clothes.getTheType().equals("The Upper Part"))
-                                    adapterUpper.add(clothes);
+                                    //adapterRecLst.getList().add(clothes);
                                 if (clothes.getTheType().equals("The Lower Part"))
                                     adapterLower.add(clothes);
                                 if (clothes.getTheType().equals("The Shoe"))
