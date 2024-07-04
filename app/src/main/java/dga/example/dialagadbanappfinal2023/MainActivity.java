@@ -14,10 +14,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.HorizontalScrollView;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.Spinner;
 import android.widget.Toast;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -32,6 +39,7 @@ import java.util.List;
 
 import dga.example.dialagadbanappfinal2023.data.MySeasonTable.MySeason;
 import dga.example.dialagadbanappfinal2023.data.MySeasonTable.MySeasonQuery1;
+import dga.example.dialagadbanappfinal2023.data.clothesTable.HorizontalListView;
 import dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothes;
 import dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothesAdapter;
 import dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothesQuery1;
@@ -44,10 +52,10 @@ public class MainActivity extends AppCompatActivity {
     //spnr1 تعريف صفه للكائن المرئي
     private Spinner spnrSubject1;
     private FloatingActionButton fabAdd1;
-    private ListView spinnerspnrUpper;
-    private ListView spinnerLowerPart;
-    private ListView spinnerTheShoes;
-    private ListView spinnermyAccessories;
+    private HorizontalListView lstvUpperr;
+    private HorizontalListView lstvLowerPart;
+    private HorizontalListView lstvTheShoes;
+    private HorizontalListView lstvrmyAccessories;
     MyClothesAdapter adapterUpper,adapterLower,adapterTheShoes,adapterAccessories;
 
 
@@ -68,10 +76,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        spinnerspnrUpper=findViewById(R.id.spinnerspnrUpper) ;
-        spinnerLowerPart=findViewById(R.id.spinnerLowerPart);
-        spinnerTheShoes=findViewById(R.id.spinnerTheShoes);
-        spinnermyAccessories=findViewById(R.id.spinnermyAccessories);
+        lstvUpperr=findViewById(R.id.lstvUpper) ;
+        lstvLowerPart=findViewById(R.id.lstvLowerPart);
+        lstvTheShoes=findViewById(R.id.lstvTheShoes);
+        lstvrmyAccessories=findViewById(R.id.lstvrmyAccessories);
 //        imageView1 = (ImageView) findViewById(R.id.imageView1);
        // imageView2 = (ImageView) findViewById(R.id.imageVitm);
 //        imageView3 = (ImageView) findViewById(R.id.imageView3);
@@ -84,11 +92,15 @@ public class MainActivity extends AppCompatActivity {
         adapterUpper = new MyClothesAdapter(getApplicationContext(),R.layout.clothes_item_layout);
          adapterLower = new MyClothesAdapter(getApplicationContext(), R.layout.clothes_item_layout);
         adapterTheShoes = new MyClothesAdapter(getApplicationContext(), R.layout.clothes_item_layout);
-         adapterAccessories = new MyClothesAdapter(getApplicationContext(), R.layout.clothes_item_layout);
-         spinnerspnrUpper.setAdapter(adapterUpper);
-        spinnerLowerPart.setAdapter(adapterLower);
-        spinnermyAccessories.setAdapter(adapterAccessories);
-        spinnerTheShoes.setAdapter(adapterTheShoes);
+        adapterAccessories = new MyClothesAdapter(getApplicationContext(), R.layout.clothes_item_layout);
+        lstvUpperr.setAdapter(adapterUpper);
+       lstvLowerPart.setAdapter(adapterLower);
+        lstvrmyAccessories.setAdapter(adapterAccessories);
+       lstvTheShoes.setAdapter(adapterTheShoes);
+
+
+
+
 
 /**
  * الهدف هو فتح نشاط (Activity) جديد يسمى AddPic عند النقر على زر fabAdd1.
@@ -101,13 +113,16 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
 /**
  * الهدف من هذه الأسطر هو ربط محولات البيانات (Adapters) مع عناصر القوائم المنسدلة (Spinners) في واجهة المستخدم. وهذا يسمح بعرض البيانات في هذه القوائم المنسدلة. بمعنى آخر، يقوم الكود بتعيين المحولات لعناصر Spinner بحيث يتم ملء القوائم المنسدلة بالبيانات التي توفرها هذه المحولات.
  */
-        spinnerspnrUpper.setAdapter(adapterUpper);
-        spinnerLowerPart.setAdapter(adapterLower);
-        spinnermyAccessories.setAdapter(adapterAccessories);
-        spinnerTheShoes.setAdapter(adapterTheShoes);
+        lstvUpperr.setAdapter(adapterUpper);
+        lstvLowerPart.setAdapter(adapterLower);
+        lstvrmyAccessories.setAdapter(adapterAccessories);
+       lstvTheShoes.setAdapter(adapterTheShoes);
+
+
 
         //spnr2 وضع مؤشر الصفه على الكائن المرئي الموجود بواجهه المستعمل
 //        spnrSubject1 = findViewById(R.id.pickDis1);
@@ -122,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
         //spnrSubject1.setAdapter(adapter);
 
     }
+
 
 
     //public void onClickAddPic(View v)

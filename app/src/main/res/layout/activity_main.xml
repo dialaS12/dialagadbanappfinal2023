@@ -75,8 +75,8 @@
 
                 android:text="UpperPart" />
 
-            <ListView
-                android:id="@+id/spinnerspnrUpper"
+            <dga.example.dialagadbanappfinal2023.data.clothesTable.HorizontalListView
+                android:id="@+id/lstvUpper"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginTop="5dp"
@@ -87,8 +87,8 @@
                 android:layout_height="wrap_content"
                 android:text="LowerPart" />
 
-            <ListView
-                android:id="@+id/spinnerLowerPart"
+            <dga.example.dialagadbanappfinal2023.data.clothesTable.HorizontalListView
+                android:id="@+id/lstvLowerPart"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginTop="5dp"
@@ -99,8 +99,8 @@
                 android:layout_height="wrap_content"
                 android:text="TheShoes" />
 
-            <ListView
-                android:id="@+id/spinnerTheShoes"
+            <dga.example.dialagadbanappfinal2023.data.clothesTable.HorizontalListView
+                android:id="@+id/lstvTheShoes"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginTop="5dp"
@@ -111,8 +111,8 @@
                 android:layout_height="wrap_content"
                 android:text="myAccessories" />
 
-            <ListView
-                android:id="@+id/spinnermyAccessories"
+            <dga.example.dialagadbanappfinal2023.data.clothesTable.HorizontalListView
+                android:id="@+id/lstvrmyAccessories"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginTop="5dp"
