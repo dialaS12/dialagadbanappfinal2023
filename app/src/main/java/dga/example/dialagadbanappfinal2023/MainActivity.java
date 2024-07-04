@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+//
 
     @Override//داله لكي يبين التلت نقاط في الشاشه
     public boolean onCreateOptionsMenu(Menu menu) {
