@@ -34,7 +34,6 @@ import java.util.List;
 
 import dga.example.dialagadbanappfinal2023.data.MySeasonTable.MySeason;
 import dga.example.dialagadbanappfinal2023.data.MySeasonTable.MySeasonQuery1;
-import dga.example.dialagadbanappfinal2023.data.clothesTable.HorizontalListView;
 import dga.example.dialagadbanappfinal2023.data.clothesTable.MyAdapterRecLst;
 import dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothes;
 import dga.example.dialagadbanappfinal2023.data.clothesTable.MyClothesAdapter;
@@ -48,10 +47,9 @@ public class MainActivity extends AppCompatActivity {
     //spnr1 تعريف صفه للكائن المرئي
     private Spinner spnrSubject1;
     private FloatingActionButton fabAdd1;
-   // private HorizontalListView lstvUpperr;
-    private HorizontalListView lstvLowerPart;
-    private HorizontalListView lstvTheShoes;
-    private HorizontalListView lstvrmyAccessories;
+
+
+
     MyClothesAdapter adapterUpper,adapterLower,adapterTheShoes,adapterAccessories;
     private RecyclerView lstvUpperr;
     private RecyclerView lstvLower;
@@ -67,15 +65,6 @@ public class MainActivity extends AppCompatActivity {
     public MainActivity() {
     }
 
-
-    // private FloatingActionButton fabAdd4;
-   // private FloatingActionButton fabAdd5;
-  //  private ImageView imageView1;
-   // private ImageView imageView2;
-  //  private ImageView imageView3;
-    //private ImageView imageView4;
-
-
     /**
      *هذا الكود يقوم بتهيئة عناصر الواجهة المختلفة للنشاط (عناصر Spinner وFloatingActionButton وبعض ImageView غير المفعلة)، ويقوم بتهيئة المحولات التي ستستخدم لتوفير البيانات لعناصر Spinner.
      * @param savedInstanceState
@@ -85,26 +74,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       // lstvUpperr=findViewById(R.id.lstvUpper) ;
-
-        lstvrmyAccessories=findViewById(R.id.lstvrmyAccessories);
-//        imageView1 = (ImageView) findViewById(R.id.imageView1);
-       // imageView2 = (ImageView) findViewById(R.id.imageVitm);
-//        imageView3 = (ImageView) findViewById(R.id.imageView3);
-        //imageView4 = (ImageView) findViewById(R.id.imageView4);
         fabAdd1 = (FloatingActionButton) findViewById(R.id.fabAdd1);
-//        fabAdd2 = (FloatingActionButton) findViewById(R.id.fabAdd2);
-//        fabAdd3 = (FloatingActionButton) findViewById(R.id.fabAdd3);
-//        fabAdd4 = (FloatingActionButton) findViewById(R.id.fabAdd4);
-       // fabAdd5 = (FloatingActionButton) findViewById(R.id.fav1);
-       // adapterUpper = new MyClothesAdapter(getApplicationContext(),R.layout.clothes_item_layout);
+        adapterUpper=new MyClothesAdapter(getApplicationContext(),R.layout.clothes_item_layout);
          adapterLower = new MyClothesAdapter(getApplicationContext(), R.layout.clothes_item_layout);
         adapterTheShoes = new MyClothesAdapter(getApplicationContext(), R.layout.clothes_item_layout);
         adapterAccessories = new MyClothesAdapter(getApplicationContext(), R.layout.clothes_item_layout);
-        //lstvUpperr.setAdapter(adapterUpper);
-       lstvLowerPart.setAdapter(adapterLower);
-        lstvrmyAccessories.setAdapter(adapterAccessories);
-       lstvTheShoes.setAdapter(adapterTheShoes);
+
+//        lstvUpperr.setAdapter(adapterUpper);
+//       lstvLowerPart.setAdapter(adapterLower);
+//        lstvrmyAccessories.setAdapter(adapterAccessories);
+//       lstvTheShoes.setAdapter(adapterTheShoes);
         // Find RecyclerView by Id (from the activity_main.xml)
          lstvUpperr = findViewById(R.id.lstvUpper);
 // Instantiate SubjectAdapter with the data
@@ -116,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Find RecyclerView by Id (from the activity_main.xml)
-        lstvLowerPart=findViewById(R.id.lstvLowerPart);
+        lstvLower=findViewById(R.id.lstvLowerPart);
         // Instantiate SubjectAdapter with the data
         adapterRecLstLower = new MyAdapterRecLst(new ArrayList<MyClothes>(),this);
 // Set adapter with RecyclerView
@@ -125,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         lstvLower.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
 
         // Find RecyclerView by Id (from the activity_main.xml)
-        lstTheShose=findViewById(R.id.lstvLowerPart);
+        lstTheShose=findViewById(R.id.lstTheShose);
         // Instantiate SubjectAdapter with the data
         adapterRecLstTheShoes = new MyAdapterRecLst(new ArrayList<MyClothes>(),this);
 // Set adapter with RecyclerView
@@ -135,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Find RecyclerView by Id (from the activity_main.xml)
-        lstvmyAccessories=findViewById(R.id.lstvLowerPart);
+        lstvmyAccessories=findViewById(R.id.lstvmyAccessories);
         // Instantiate SubjectAdapter with the data
         adapterRecLstmyAccessories = new MyAdapterRecLst(new ArrayList<MyClothes>(),this);
 // Set adapter with RecyclerView
@@ -503,10 +482,9 @@ public class MainActivity extends AppCompatActivity {
                         if(task.isSuccessful())// אם בקשת הנתונים התקבלה בהצלחה
                         {
                             adapterRecLstUpper.getList().clear();
-
-                            adapterLower.clear();
-                            adapterAccessories.clear();
-                            adapterTheShoes.clear();
+                            adapterRecLstLower.getList().clear();
+                            adapterRecLstTheShoes.getList().clear();
+                            adapterRecLstmyAccessories.getList().clear();
                             //מעבר על כל ה״מסמכים״= עצמים והוספתם למבנה הנתונים
                             for (DocumentSnapshot document : task.getResult().getDocuments()) {
                                 //המרת העצם לטיפוס שלו// הוספת העצם למבנה הנתונים
@@ -517,11 +495,17 @@ public class MainActivity extends AppCompatActivity {
                                     adapterRecLstUpper.notifyDataSetChanged();
                                 }
                                 if (clothes.getTheType().equals("The Lower Part"))
-                                    adapterLower.add(clothes);
+                                    adapterRecLstLower.getList().add(clothes);
+                                adapterRecLstLower.notifyDataSetChanged();
+
                                 if (clothes.getTheType().equals("The Shoe"))
-                                    adapterTheShoes.add(clothes);
+                                    adapterRecLstTheShoes.getList().add(clothes);
+                                adapterRecLstTheShoes.notifyDataSetChanged();
+
                                 if (clothes.getTheType().equals("Accessories"))
-                                    adapterAccessories.add(clothes);
+                                    adapterRecLstmyAccessories.getList().add(clothes);
+                                adapterRecLstmyAccessories.notifyDataSetChanged();
+
 
                             }
                         }

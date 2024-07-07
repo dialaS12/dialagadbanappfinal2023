@@ -1,12 +1,10 @@
 package dga.example.dialagadbanappfinal2023.data.clothesTable;
 
-import static java.security.AccessController.getContext;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,7 +21,7 @@ public class MyAdapterRecLst
 
     {
 
-        // ... ViewHolder class and its constructor as per above
+        // ... فئة ViewHolder ومنشئها كما هو موضح أعلاه
 
 
         ArrayList<MyClothes> list;
@@ -37,7 +35,7 @@ public class MyAdapterRecLst
         return list;
     }
 
-        // Constructor
+        // Constructor         منشئ
     public MyAdapterRecLst(ArrayList < MyClothes > list, MainActivity contexct) {
         this.contexct = contexct;
         this.list = list;
@@ -47,29 +45,29 @@ public class MyAdapterRecLst
         @NonNull
         @Override
         public ViewHolder onCreateViewHolder (@NonNull ViewGroup parent,int viewType){
-        // Inflate the layout
+        // Inflate the layout         تضخيم التخطيط
         View contactView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.clothes_item_layout, parent, false);
 
-        // Return a new holder instance
+        // Return a new holder instance         إرجاع مثيل حامل جديد
         ViewHolder viewHolder = new ViewHolder(contactView);
 
         return viewHolder;
     }
 
-        // Assigning respective data for the views based on the position of the current item
+        // Assigning respective data for the views based on the position of the current item         تعيين البيانات ذات الصلة للآراء استنادا إلى موضع البند الحالي
         @Override
         public void onBindViewHolder (@NonNull MyAdapterRecLst.ViewHolder holder,int position){
-        // Get the Subject based on the current position
+        // Get the Subject based on the current position        احصل على الموضوع بناء على الوظيفة الحالية
         MyClothes currentItem = list.get(position);
         downloadImageUsingPicasso(currentItem.getThePic(), holder.imageView);
-        // Setting views with the corresponding data
+        // Setting views with the corresponding data        تعيين طرق العرض مع البيانات المقابلة
         ImageView imageView = holder.imageView;
 
        downloadImageUsingPicasso(currentItem.thePic, imageView);
     }
 
-        // Indicating how long your data is
+        // Indicating how long your data is        الإشارة إلى المدة التي تستغرقها بياناتك
         @Override
         public int getItemCount () {
         return list.size();
@@ -77,11 +75,11 @@ public class MyAdapterRecLst
         public class ViewHolder extends RecyclerView.ViewHolder {
             ImageView imageView;
 
-            // Constructor - accepts entire row item
+            // Constructor - accepts entire row item            المنشئ - يقبل عنصر الصف بأكمله
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
 
-                // //קבלת הפניות לרכיבים בקובץ העיצוב
+                // //קבלת הפניות לרכיבים בקובץ העיצוב                الحصول على مراجع للعناصر في ملف التصميم
                 imageView = itemView.findViewById(R.id.imageVitm);
 
 
@@ -94,15 +92,15 @@ public class MyAdapterRecLst
          */
         private void downloadImageUsingPicasso (String imageUrL, ImageView toView)
         {
-            // אם אין תמונה= כתובת ריקה אז לא עושים כלום מפסיקים את הפעולה
+            // אם אין תמונה= כתובת ריקה אז לא עושים כלום מפסיקים את הפעולה            إذا لم يكن هناك صورة = عنوان فارغ ، فلا تفعل شيئا ، أوقف العملية
             if (imageUrL == null) return;
             //todo: add dependency to module gradle:
             Picasso.with(getContexct())
-                    .load(imageUrL)//הורדת התמונה לפי כתובת
+                    .load(imageUrL)//הורדת התמונה לפי כתובת قم بتنزيل الصورة حسب العنوان
                     .centerCrop()
-                    .error(R.drawable.logodiala_background)//התמונה שמוצגת אם יש בעיה בהורדת התמונה
-                    .resize(100, 100)//שינוי גודל התמונה
-                    .into(toView);// להציג בריכיב התמונה המיועד לתמונה זו
+                    .error(R.drawable.logodiala_background)//התמונה שמוצגת אם יש בעיה בהורדת התמונה الصورة المعروضة إذا كانت هناك مشكلة في تنزيل الصورة
+                    .resize(100, 100)//שינוי גודל התמונה تغيير حجم الصورة
+                    .into(toView);// להציג בריכיב התמונה המיועד לתמונה זו العرض في كرسي الصورة المخصص لهذه الصورة
         }
 
 }

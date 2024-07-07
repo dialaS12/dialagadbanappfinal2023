@@ -39,7 +39,7 @@
                         android:backgroundTint="#E1C4E8"
                         android:hint="Name"
                         android:inputType="text"
-                        android:textColor="#F8F6F6" />
+                        android:textColor="#100101" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
