@@ -76,55 +76,46 @@
                 android:layout_height="wrap_content"
 
                 android:text="UpperPart" />
-            <view class="androidx.appcompat.app.AlertController$RecycleListView"
-                android:id="@+id/lstvUpper"
+            <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/lstvUpper"
+                />
 
-            </view>
 
-<!--            <dga.example.dialagadbanappfinal2023.data.clothesTable.HorizontalListView-->
-<!--                android:id="@+id/lstvUpper"-->
-<!--                android:layout_width="700dp"-->
-<!--                android:layout_height="200dp"-->
-<!--                android:layout_marginTop="5dp"-->
-<!--                android:layout_weight="1" />-->
             <TextView
                 android:id="@+id/textView12LowerPart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="LowerPart" />
 
-            <dga.example.dialagadbanappfinal2023.data.clothesTable.HorizontalListView
-                android:id="@+id/lstvLowerPart"
+            <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1" />
+                android:layout_height="wrap_content"
+                android:id="@+id/lstvLowerPart"
+                />
             <TextView
                 android:id="@+id/textView11TheShoes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TheShoes" />
 
-            <dga.example.dialagadbanappfinal2023.data.clothesTable.HorizontalListView
-                android:id="@+id/lstvTheShoes"
+            <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1" />
+                android:layout_height="wrap_content"
+                android:id="@+id/lstTheShose"
+                />
             <TextView
                 android:id="@+id/textView11myAccessories"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="myAccessories" />
 
-            <dga.example.dialagadbanappfinal2023.data.clothesTable.HorizontalListView
-                android:id="@+id/lstvrmyAccessories"
+            <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1" />
+                android:layout_height="wrap_content"
+                android:id="@+id/lstvrmyAccessories"
+                />
 
 
         </LinearLayout>

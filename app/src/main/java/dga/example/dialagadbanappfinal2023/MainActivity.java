@@ -21,10 +21,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Bundle;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -52,13 +48,24 @@ public class MainActivity extends AppCompatActivity {
     //spnr1 تعريف صفه للكائن المرئي
     private Spinner spnrSubject1;
     private FloatingActionButton fabAdd1;
-    private HorizontalListView lstvUpperr;
+   // private HorizontalListView lstvUpperr;
     private HorizontalListView lstvLowerPart;
     private HorizontalListView lstvTheShoes;
     private HorizontalListView lstvrmyAccessories;
     MyClothesAdapter adapterUpper,adapterLower,adapterTheShoes,adapterAccessories;
-  //  private RecyclerView recyclerView;
-    private MyAdapterRecLst adapterRecLst;
+    private RecyclerView lstvUpperr;
+    private RecyclerView lstvLower;
+    private RecyclerView lstTheShose;
+    private RecyclerView lstvmyAccessories;
+    private MyAdapterRecLst adapterRecLstUpper;
+    private MyAdapterRecLst adapterRecLstLower;
+    private MyAdapterRecLst adapterRecLstTheShoes;
+    private MyAdapterRecLst adapterRecLstmyAccessories;
+
+
+
+    public MainActivity() {
+    }
 
 
     // private FloatingActionButton fabAdd4;
@@ -79,8 +86,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
        // lstvUpperr=findViewById(R.id.lstvUpper) ;
-        lstvLowerPart=findViewById(R.id.lstvLowerPart);
-        lstvTheShoes=findViewById(R.id.lstvTheShoes);
+
         lstvrmyAccessories=findViewById(R.id.lstvrmyAccessories);
 //        imageView1 = (ImageView) findViewById(R.id.imageView1);
        // imageView2 = (ImageView) findViewById(R.id.imageVitm);
@@ -91,22 +97,54 @@ public class MainActivity extends AppCompatActivity {
 //        fabAdd3 = (FloatingActionButton) findViewById(R.id.fabAdd3);
 //        fabAdd4 = (FloatingActionButton) findViewById(R.id.fabAdd4);
        // fabAdd5 = (FloatingActionButton) findViewById(R.id.fav1);
-        adapterUpper = new MyClothesAdapter(getApplicationContext(),R.layout.clothes_item_layout);
+       // adapterUpper = new MyClothesAdapter(getApplicationContext(),R.layout.clothes_item_layout);
          adapterLower = new MyClothesAdapter(getApplicationContext(), R.layout.clothes_item_layout);
         adapterTheShoes = new MyClothesAdapter(getApplicationContext(), R.layout.clothes_item_layout);
         adapterAccessories = new MyClothesAdapter(getApplicationContext(), R.layout.clothes_item_layout);
-        lstvUpperr.setAdapter(adapterUpper);
+        //lstvUpperr.setAdapter(adapterUpper);
        lstvLowerPart.setAdapter(adapterLower);
         lstvrmyAccessories.setAdapter(adapterAccessories);
        lstvTheShoes.setAdapter(adapterTheShoes);
-//        // Find RecyclerView by Id (from the activity_main.xml)
-//         recyclerView = findViewById(R.id.lstvUpper);
-//// Instantiate SubjectAdapter with the data
-//         adapterRecLst = new MyAdapterRecLst(new ArrayList<MyClothes>(),this);
-//// Set adapter with RecyclerView
-//        recyclerView.setAdapter(adapterRecLst);
-//// Set LayoutManager
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+        // Find RecyclerView by Id (from the activity_main.xml)
+         lstvUpperr = findViewById(R.id.lstvUpper);
+// Instantiate SubjectAdapter with the data
+         adapterRecLstUpper = new MyAdapterRecLst(new ArrayList<MyClothes>(),this);
+// Set adapter with RecyclerView
+        lstvUpperr.setAdapter(adapterRecLstUpper);
+// Set LayoutManager
+        lstvUpperr.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+
+
+        // Find RecyclerView by Id (from the activity_main.xml)
+        lstvLowerPart=findViewById(R.id.lstvLowerPart);
+        // Instantiate SubjectAdapter with the data
+        adapterRecLstLower = new MyAdapterRecLst(new ArrayList<MyClothes>(),this);
+// Set adapter with RecyclerView
+        lstvLower.setAdapter(adapterRecLstLower);
+// Set LayoutManager
+        lstvLower.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+
+        // Find RecyclerView by Id (from the activity_main.xml)
+        lstTheShose=findViewById(R.id.lstvLowerPart);
+        // Instantiate SubjectAdapter with the data
+        adapterRecLstTheShoes = new MyAdapterRecLst(new ArrayList<MyClothes>(),this);
+// Set adapter with RecyclerView
+        lstTheShose.setAdapter(adapterRecLstTheShoes);
+// Set LayoutManager
+        lstTheShose.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+
+
+        // Find RecyclerView by Id (from the activity_main.xml)
+        lstvmyAccessories=findViewById(R.id.lstvLowerPart);
+        // Instantiate SubjectAdapter with the data
+        adapterRecLstmyAccessories = new MyAdapterRecLst(new ArrayList<MyClothes>(),this);
+// Set adapter with RecyclerView
+        lstvmyAccessories.setAdapter(adapterRecLstmyAccessories);
+// Set LayoutManager
+        lstvmyAccessories.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+
+
+
 
 
 
@@ -127,10 +165,10 @@ public class MainActivity extends AppCompatActivity {
 /**
  * الهدف من هذه الأسطر هو ربط محولات البيانات (Adapters) مع عناصر القوائم المنسدلة (Spinners) في واجهة المستخدم. وهذا يسمح بعرض البيانات في هذه القوائم المنسدلة. بمعنى آخر، يقوم الكود بتعيين المحولات لعناصر Spinner بحيث يتم ملء القوائم المنسدلة بالبيانات التي توفرها هذه المحولات.
  */
-        lstvUpperr.setAdapter(adapterUpper);
-        lstvLowerPart.setAdapter(adapterLower);
-        lstvrmyAccessories.setAdapter(adapterAccessories);
-       lstvTheShoes.setAdapter(adapterTheShoes);
+       // lstvUpperr.setAdapter(adapterUpper);
+        //lstvLowerPart.setAdapter(adapterLower);
+       // lstvrmyAccessories.setAdapter(adapterAccessories);
+      // lstvTheShoes.setAdapter(adapterTheShoes);
 
 
 
@@ -464,7 +502,8 @@ public class MainActivity extends AppCompatActivity {
 
                         if(task.isSuccessful())// אם בקשת הנתונים התקבלה בהצלחה
                         {
-                            //adapterRecLst .getList().clear();
+                            adapterRecLstUpper.getList().clear();
+
                             adapterLower.clear();
                             adapterAccessories.clear();
                             adapterTheShoes.clear();
@@ -473,8 +512,10 @@ public class MainActivity extends AppCompatActivity {
                                 //המרת העצם לטיפוס שלו// הוספת העצם למבנה הנתונים
                                 MyClothes clothes = document.toObject(MyClothes.class);
                                 ///        String[] ar = {"The Upper Part", "The Lower Part", "The Shoe", "Accessories"};
-                                if (clothes.getTheType().equals("The Upper Part"))
-                                    //adapterRecLst.getList().add(clothes);
+                                if (clothes.getTheType().equals("The Upper Part")) {
+                                    adapterRecLstUpper.getList().add(clothes);
+                                    adapterRecLstUpper.notifyDataSetChanged();
+                                }
                                 if (clothes.getTheType().equals("The Lower Part"))
                                     adapterLower.add(clothes);
                                 if (clothes.getTheType().equals("The Shoe"))
