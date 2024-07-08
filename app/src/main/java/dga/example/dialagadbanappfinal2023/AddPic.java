@@ -228,24 +228,31 @@ public class AddPic extends AppCompatActivity {
     private void checkAndSaveClothes()
     {
         boolean isAllOk1 = true;
+        //جمع عنوان الملابس من حقل النص (EditText):
         String Title = etTitle.getText().toString();
+        //جمع نوع الملابس من القائمة المنسدلة (Spinner):
         String part=spinnerPart.getSelectedItem().toString();
+        //جمع الموسم من القائمة المنسدلة (Spinner)
         String season=spinnerSeason.getSelectedItem().toString();
-
+//إذا كان العنوان فارغًا، يتم تعيين isAllOk1 إلى false وإظهار خطأ على حقل النص.
         if (Title.length()==0)
         {
             isAllOk1=false;
             etTitle.setError("must have a title to this utf");
 
         }
+        //لتحقق مما إذا كانت الصورة قد تم تحميلها:
         if (toUploadimageUri==null)
         {
+            //إذا لم يكن هناك صورة للتحميل (toUploadimageUri تساوي null)، يتم تعيين isAllOk1 إلى false وإظهار رسالة تذكير للمستخدم لإضافة صورة.
             isAllOk1=false;
             Toast.makeText(this, "add image???", Toast.LENGTH_SHORT).show();
 
         }
+        //إذا كانت جميع المعلومات صحيحة (isAllOk1 لا تزال true):
         if (isAllOk1)
         {
+            //يتم تحديث كائن الملابس (clothes) بالمعلومات التي تم جمعها: العنوان (Title)، النوع (part)، والموسم (season). ثم يتم استدعاء دالة uploadImage لتحميل الصورة.
             clothes.setTitle(Title);
             clothes.setTheType(part);
             clothes.setTheSeason(season);
@@ -264,29 +271,35 @@ public class AddPic extends AppCompatActivity {
      */
     private void uploadImage(Uri filePath) {
         if (filePath != null) {
-            //יצירת דיאלוג התקדמות
+            //יצירת דיאלוג התקדמות     إنشاء حوار تقدم
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading...");
             progressDialog.show();//הצגת הדיאלוג
             //קבלת כתובת האחסון בענן
+            //هو خدمة تخزين السحابية التي توفرها Firebase لتخزين وإدارة الملفات في السحابة
             FirebaseStorage storage = FirebaseStorage.getInstance();
+            //يقوم بالحصول على مرجع (Reference) للتخزين (Storage) في Firebase
             StorageReference storageReference = storage.getReference();
-            //יצירת תיקיה ושם גלובלי לקובץ
+            //יצירת תיקיה ושם גלובלי לקובץهذا الكود يقوم بإنشاء مرجع (Reference) جديد في Firebase Storage تحت مسار محدد
             final StorageReference ref = storageReference.child("images/" + UUID.randomUUID().toString());
             // יצירת ״תהליך מקביל״ להעלאת תמונה
             ref.putFile(filePath)
-                    //הוספת מאזין למצב ההעלאה
+                    //הוספת מאזין למצב ההעלאה  هذا الجزء يضيف مستمع للاستجابة لعملية الرفع، ويتم تنفيذه عندما تنتهي عملية الرفع بالكامل.
                     .addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                             if (task.isSuccessful()) {
+                                // يقوم بإخفاء مربع الحوار (Dialog) المستخدم لعرض تقدم عملية الرفع بعد اكتمالها أو فشلها.
                                 progressDialog.dismiss();// הסתרת הדיאלוג
                                 //קבלת כתובת הקובץ שהועלה
+                                //يتم استخدامه للحصول على عنوان URL للملف الذي تم رفعه. يتم تنفيذه بعد اكتمال عملية الرفع بنجاح.
                                 ref.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Uri> task) {
+                                        //يستخدم للحصول على عنوان URL الفعلي للملف الذي تم تحميله.
                                         downladuri = task.getResult();
                                         Toast.makeText(getApplicationContext(), "Uploaded", Toast.LENGTH_SHORT).show();
+                                        //: يحدث هنا تحديث للصورة في كائن "clothes" إلى العنوان URL الجديد.
                                         clothes.setThePic(downladuri.toString());//עדכון כתובת התמונה שהועלתה
                                         Saveclothes_FB(clothes);
                                     }

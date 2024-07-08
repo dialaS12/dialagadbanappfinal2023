@@ -49,7 +49,7 @@ public class MyAdapterRecLst
         View contactView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.clothes_item_layout, parent, false);
 
-        // Return a new holder instance         إرجاع مثيل حامل جديد
+        // Return a new holder instance         إرجاع ViewHolder جديد
         ViewHolder viewHolder = new ViewHolder(contactView);
 
         return viewHolder;
@@ -60,6 +60,7 @@ public class MyAdapterRecLst
         public void onBindViewHolder (@NonNull MyAdapterRecLst.ViewHolder holder,int position){
         // Get the Subject based on the current position        احصل على الموضوع بناء على الوظيفة الحالية
         MyClothes currentItem = list.get(position);
+        //   الهدف من هذا يستخدم مكتبة Picasso لتحميل صورة من عنوان URL ووضعها في عنصر ImageView في واجهة المستخدم.
         downloadImageUsingPicasso(currentItem.getThePic(), holder.imageView);
         // Setting views with the corresponding data        تعيين طرق العرض مع البيانات المقابلة
         ImageView imageView = holder.imageView;

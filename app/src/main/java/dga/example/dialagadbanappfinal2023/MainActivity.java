@@ -75,22 +75,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         fabAdd1 = (FloatingActionButton) findViewById(R.id.fabAdd1);
+        // يقوم بإنشاء كائن جديد من النوع MyClothesAdapter ويبدو أنه يتم استخدامه في تطبيقك كمحول (Adapter) لعناصر البيانات
         adapterUpper=new MyClothesAdapter(getApplicationContext(),R.layout.clothes_item_layout);
          adapterLower = new MyClothesAdapter(getApplicationContext(), R.layout.clothes_item_layout);
         adapterTheShoes = new MyClothesAdapter(getApplicationContext(), R.layout.clothes_item_layout);
         adapterAccessories = new MyClothesAdapter(getApplicationContext(), R.layout.clothes_item_layout);
 
-//        lstvUpperr.setAdapter(adapterUpper);
-//       lstvLowerPart.setAdapter(adapterLower);
-//        lstvrmyAccessories.setAdapter(adapterAccessories);
-//       lstvTheShoes.setAdapter(adapterTheShoes);
-        // Find RecyclerView by Id (from the activity_main.xml)
+////هدف هذا الكود هو إعداد مكون RecyclerView في تطبيق أندرويد لعرض قائمة من العناصر بشكل أفقي. إليك شرح لكل جزء من الكود وما يهدف إلى تحقيقه:
+        //العثور على RecyclerView في ملف التخطيط (layout):
          lstvUpperr = findViewById(R.id.lstvUpper);
+      //  إنشاء محول (adapter) مخصص باستخدام قائمة فارغة:
+
 // Instantiate SubjectAdapter with the data
          adapterRecLstUpper = new MyAdapterRecLst(new ArrayList<MyClothes>(),this);
-// Set adapter with RecyclerView
+// Set adapter with RecyclerView       //تعيين المحول إلى RecyclerView:
         lstvUpperr.setAdapter(adapterRecLstUpper);
-// Set LayoutManager
+// Set LayoutManagerعيين  LayoutManager لتنظيم العناصر بشكل أفقي:
         lstvUpperr.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
 
 
@@ -141,40 +141,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-/**
- * الهدف من هذه الأسطر هو ربط محولات البيانات (Adapters) مع عناصر القوائم المنسدلة (Spinners) في واجهة المستخدم. وهذا يسمح بعرض البيانات في هذه القوائم المنسدلة. بمعنى آخر، يقوم الكود بتعيين المحولات لعناصر Spinner بحيث يتم ملء القوائم المنسدلة بالبيانات التي توفرها هذه المحولات.
- */
-       // lstvUpperr.setAdapter(adapterUpper);
-        //lstvLowerPart.setAdapter(adapterLower);
-       // lstvrmyAccessories.setAdapter(adapterAccessories);
-      // lstvTheShoes.setAdapter(adapterTheShoes);
 
 
 
-        //spnr2 وضع مؤشر الصفه على الكائن المرئي الموجود بواجهه المستعمل
-//        spnrSubject1 = findViewById(R.id.pickDis1);
-        //spnr3 بناء الوسيط وتحديد واجهه تنسيق لمعطى واحد
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //spnr4 data sourceمصدر معطيات (ممكن ان يكون قائمة من قاعدة بيانات مثلا)
-        String[] ar = {"Random", "Specific color", "Sporty", "Formal or Business Attire", "Casual Style, other..."};
-        //spnr5تحديد المعطيات للوسيط
-        adapter.addAll(ar);
-        //spnr6ربط الكائن المرئي بالوسيط
-        //spnrSubject1.setAdapter(adapter);
 
     }
 
 
-
-    //public void onClickAddPic(View v)
-    // {
-    //to open new activity from current to next
-    //Intent i= new Intent(MainActivity.this,AddPic.class);
-    // startActivity(i);
-    //to close current activity
-
-    // }
 
     private void initSubjectSpnr() {
         AppDatabace db = AppDatabace.getDB(getApplicationContext());// قاعدة بناء
@@ -222,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * تجهيز قائمة جميع المهمهات وعرضها ب list view
+     * تجهيز قائمة جميع الملابس  وعرضها ب list view
      */
     private void initAllListView() {
 
@@ -280,34 +253,33 @@ public class MainActivity extends AppCompatActivity {
          * @param v
          * @param item
          */
-        public void showPopUpMenu(View v, MyClothes item) {
+       // public void showPopUpMenu(View v, MyClothes item) {
             //بناء القائمة popup menu
-            PopupMenu popup = new PopupMenu(this, v);
+           // PopupMenu popup = new PopupMenu(this, v);
             //ملف القائمة
-            popup.inflate(R.menu.pupupmenu);
+          //  popup.inflate(R.menu.pupupmenu);
             //اضافة معالج حدث لاختيار عنصر من القائمة
-            popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem menuItem) {
-                    if (menuItem.getItemId() == R.id.mnTakePhoto) {
+           // popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+              //  @Override
+              //  public boolean onMenuItemClick(MenuItem menuItem) {
+               //     if (menuItem.getItemId() == R.id.mnTakePhoto) {
                         //هنا نكتب ردة فعل لاختيار هذا العنصر من القائمة
-                        Toast.makeText(MainActivity.this, "Complete", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(MainActivity.this, AddPic.class);
-                        startActivity(i);
-                    }
-                    if (menuItem.getItemId() == R.id.mnDelete) {
-                        Toast.makeText(MainActivity.this, "Delete", Toast.LENGTH_SHORT).show();
-                    }
-                    if (menuItem.getItemId() == R.id.mnEdit) {
-                        Toast.makeText(MainActivity.this, "Edit", Toast.LENGTH_SHORT).show();
+                 //       Toast.makeText(MainActivity.this, "Complete", Toast.LENGTH_SHORT).show();
+                  //      Intent i = new Intent(MainActivity.this, AddPic.class);
+                 //       startActivity(i);
+                  //  }
+                  //  if (menuItem.getItemId() == R.id.mnDelete) {
+                  //      Toast.makeText(MainActivity.this, "Delete", Toast.LENGTH_SHORT).show();
+                 //   }
+                  //  if (menuItem.getItemId() == R.id.mnEdit) {
+                  //      Toast.makeText(MainActivity.this, "Edit", Toast.LENGTH_SHORT).show();
+                 //   }
+                 //   return true;
+              //  }
 
-                    }
-                    return true;
-                }
 
-
-            });
-        }
+           // });
+      //  }
 
     /**
      * الهدف من هذا الكود هو معالجة تفاعل المستخدم مع عناصر القائمة (Menu Items) في نشاط (Activity) أندرويد. بناءً على العنصر الذي تم اختياره، ينفذ التطبيق إجراءات محددة مثل عرض رسائل قصيرة (Toasts)، بدء أنشطة جديدة، أو بدء/إيقاف خدمة تشغيل الموسيقى.
@@ -316,9 +288,13 @@ public class MainActivity extends AppCompatActivity {
      */
 
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.itmProfile) {
+       //يتحقق هذا السطر مما إذا كان المعرف الخاص بالعنصر الذي تم اختياره هو itmProfile.
+        if (item.getItemId() == R.id.itmProfile)
+        {
+            //عرض هذا السطر رسالة قصيرة على الشاشة تحتوي على النص "Profile".
             Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show();
             //to open new activity from current to next activity
+            //ينشئ هذا الجزء نية (Intent) جديدة للانتقال من النشاط الحالي MainActivity إلى النشاط الجديد MyProfile، ثم يبدأ النشاط الجديد باستخدام startActivity(i).
             Intent i = new Intent(MainActivity.this, MyProfile.class);
             startActivity(i);
 
@@ -353,7 +329,7 @@ public class MainActivity extends AppCompatActivity {
         {
             Toast.makeText(this, "Stop Music", Toast.LENGTH_SHORT).show();
             Intent serviceIntn=new Intent(getApplicationContext(),MyAdudioPlayerService.class);
-            startService(serviceIntn);
+            stopService(serviceIntn);
         }
 
         return true;
@@ -379,6 +355,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    // تُستدعى هذه الدالة عندما يعود النشاط إلى المقدمة ويصبح تفاعليًا للمستخدم بعد أن كان في وضع التوقف (Paused). الهدف من الكود داخل onResume هو تنفيذ عمليات معينة كلما عاد النشاط إلى الواجهة.
     protected void onResume() {
         super.onResume();
         Log.d("HA","onResume");
@@ -395,6 +372,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    //دالة onDestroy هي جزء من دورة حياة النشاط (Activity) في تطبيقات أندرويد. يتم استدعاء هذه الدالة عندما يتم تدمير النشاط، إما لأن النظام قرر ذلك لتحرير الذاكرة، أو لأن النشاط ينهي نفسه بشكل نهائي (مثلاً، عندما يستدعي finish()).
     protected void onDestroy() {
         super.onDestroy();
         Log.d("HA","onDestroy");
@@ -481,6 +459,7 @@ public class MainActivity extends AppCompatActivity {
 
                         if(task.isSuccessful())// אם בקשת הנתונים התקבלה בהצלחה
                         {
+                            //قوم بعملية تفريغ (إزالة كل العناصر) من قائمة البيانات التي يستخدمها المحول (adapter) في RecyclerView
                             adapterRecLstUpper.getList().clear();
                             adapterRecLstLower.getList().clear();
                             adapterRecLstTheShoes.getList().clear();
@@ -491,7 +470,11 @@ public class MainActivity extends AppCompatActivity {
                                 MyClothes clothes = document.toObject(MyClothes.class);
                                 ///        String[] ar = {"The Upper Part", "The Lower Part", "The Shoe", "Accessories"};
                                 if (clothes.getTheType().equals("The Upper Part")) {
+                                    //إذا تحقق الشرط السابق، يتم إضافة كائن clothes إلى قائمة البيانات في المحول (adapterRecLstUpper).
+                                    //getList() هي دالة مخصصة ضمن المحول تعيد قائمة البيانات التي يحتفظ بها المحول.
                                     adapterRecLstUpper.getList().add(clothes);
+                                    //بعد إضافة العنصر إلى القائمة، يتم استدعاء notifyDataSetChanged() على المحول لإعلامه بأن البيانات قد تغيرت.
+                                    //هذا يؤدي إلى تحديث واجهة المستخدم لعرض العنصر الجديد في RecyclerView.
                                     adapterRecLstUpper.notifyDataSetChanged();
                                 }
                                 if (clothes.getTheType().equals("The Lower Part"))
